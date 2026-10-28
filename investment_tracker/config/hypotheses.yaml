@@ -1,0 +1,151 @@
+# Hypotheses are data, not code. The engine (tracker/scorecard.py) knows these test types:
+#
+#   group_value   median of `metric` across `group`, compared with `op` to `threshold`
+#   group_diff    median(metric | group_a) - median(metric | group_b)  `op`  threshold
+#   series_change change in macro `series` over `window_days` (calendar days)  `op`  threshold
+#   series_change_pct  same, as a % change (for FX, prices)
+#   series_level  latest value of macro `series`  `op`  threshold
+#   series_pctile latest value's percentile within its own `lookback_days` history  `op`  threshold
+#   event_mean    mean return of `group` (or `ticker`) on the `n` largest event days of
+#                 `event` (a macro series and direction), optionally minus `relative_to` group
+#   all_of        list of `conditions` (any of the above). Pass = all pass; Fail = any fails;
+#                 otherwise n/a (not enough data).
+#
+# Units: ratios as decimals (0.10 = 10%), yields and spreads in percentage points,
+# multiples as x. Metric names are defined in tracker/metrics.py and listed in README.md.
+#
+# Signals use the same condition syntax. `kind: manual` signals cannot be checked from
+# free data; they are listed in the scorecard with "check by hand" and never auto-fire.
+
+verdict_rule:            # default for every hypothesis; a hypothesis may override it
+  min_evaluable: 2       # fewer evaluable tests than this -> Unclear
+  supported_if_pass_fraction_gte: 0.75     # e.g. 3/3, 3/4, 4/4
+  not_supported_if_pass_fraction_lte: 0.34 # e.g. 0/3, 1/3, 0/4, 1/4
+  otherwise: Unclear                       # e.g. 2/3, 2/4
+
+groups:                  # buckets from universe.csv; aliases used below
+  bottleneck: Bottleneck
+  compute: Compute leader
+  hyperscaler: Hyperscaler
+  leveraged: Leveraged buildout
+
+hypotheses:
+
+  - id: H1
+    name: AI stress hits credit first
+    statement: >
+      Physical AI bottlenecks (memory, lithography, power, engines) and cash-rich
+      hyperscalers outperform the leveraged AI buildout layer (neoclouds and
+      debt-funded builders).
+    compares: [bottleneck, hyperscaler, leveraged]
+    tests:
+      - id: H1.T1
+        name: Credit - leveraged balance sheets worse and rising, spreads widening
+        type: all_of
+        conditions:
+          - {type: group_diff, metric: net_debt_to_ebitda, group_a: leveraged, group_b: bottleneck, op: ">", threshold: 1.0,
+             note: "Leveraged median ND/EBITDA at least 1.0x above bottleneck median"}
+          - {type: group_value, metric: net_debt_to_ebitda_chg_4q, group: leveraged, op: ">", threshold: 0.0,
+             note: "Leveraged median ND/EBITDA higher than 4 quarters ago"}
+          - {type: series_change, series: US_HY_OAS, window_days: 60, op: ">", threshold: 0.25,
+             note: "PROXY: no free neocloud bond-spread feed; ICE BofA US HY OAS up >25bp in 60 days"}
+      - id: H1.T2
+        name: Drawdown - leveraged group further below 52-week high
+        type: group_diff
+        metric: pct_from_52w_high          # negative number, e.g. -0.30
+        group_a: leveraged
+        group_b: bottleneck
+        op: "<"
+        threshold: -0.10                   # leveraged at least 10pp further below its high
+      - id: H1.T3
+        name: Fundamentals - bottleneck growth holding while multiples compress
+        type: all_of
+        conditions:
+          - {type: group_value, metric: revenue_yoy, group: bottleneck, op: ">=", threshold: 0.15,
+             note: "Bottleneck median revenue growth >=15% YoY in latest quarter"}
+          - {type: group_value, metric: revenue_yoy_chg_2q, group: bottleneck, op: ">=", threshold: -0.05,
+             note: "...and not down more than 5pp vs two quarters earlier (holding)"}
+          - {type: group_value, metric: ev_ebitda_vs_3y_avg, group: bottleneck, op: "<", threshold: 0.0,
+             note: "Bottleneck median EV/EBITDA (TTM) below its own 3-year average"}
+    confirm_signals:
+      - {id: H1.C1, name: Credit spreads keep widening (proxy), type: series_change, series: US_HY_OAS, window_days: 20, op: ">", threshold: 0.10}
+      - {id: H1.C2, name: Neocloud bond yields keep rising (CoreWeave notes), kind: manual,
+         how: "Check CoreWeave 2030/2031 senior note yields on FINRA TRACE (finra-markets.morningstar.com)"}
+      - {id: H1.C3, name: TSMC orders hold - monthly revenue YoY positive, kind: manual,
+         how: "TSMC monthly revenue release, ~10th of each month (investor.tsmc.com)"}
+      - {id: H1.C4, name: ASML bookings hold, kind: manual, how: "ASML quarterly net bookings in results release"}
+    kill_signals:
+      - {id: H1.K1, name: Spreads tighten back, type: series_change, series: US_HY_OAS, window_days: 60, op: "<", threshold: -0.25}
+      - {id: H1.K2, name: Hyperscalers cut capex guidance, kind: manual,
+         how: "Earnings-call guidance from GOOGL, MSFT, AMZN, META; the news scorer also flags 'capex cut' headlines"}
+    catalysts:
+      - {name: Earnings - every company in the compared groups, source: yfinance_earnings_dates}
+      - {name: TSMC monthly revenue, source: manual, note: "around the 10th of each month"}
+      - {name: FOMC meetings, source: fed_calendar}
+
+  - id: H2
+    name: Rising US and Japan yields make high-multiple and leveraged AI names fragile
+    statement: >
+      US higher-for-longer rates plus record JGB yields raise funding costs and risk
+      unwinding the yen carry trade, which hits crowded and leveraged positions hardest.
+    premise_claims: [US_CPI_3_7, US10Y_ABOVE_5_2, JGB_RECORD]   # checked in claims_to_verify.csv, not scored
+    compares: [bottleneck, leveraged]
+    tests:
+      - id: H2.T1
+        name: Rate sensitivity - leveraged more negatively correlated with US 10-year changes
+        type: group_diff
+        metric: corr90_us10y              # rolling 90-trading-day corr of daily returns vs daily change in DGS10, latest value
+        group_a: leveraged
+        group_b: bottleneck
+        op: "<"
+        threshold: -0.10
+      - id: H2.T2
+        name: Japan transmission - JGB 30y spikes and yen strength line up with leveraged and SoftBank drawdowns
+        type: all_of
+        conditions:
+          - {type: event_mean, event: {series: JGB_30Y, direction: up}, n: 10, group: leveraged, relative_to: bottleneck, op: "<", threshold: -0.005,
+             note: "Leveraged underperforms bottleneck by >0.5pp on average on the 10 biggest JGB-30y up-days"}
+          - {type: event_mean, event: {series: USDJPY, direction: down}, n: 10, group: leveraged, relative_to: bottleneck, op: "<", threshold: -0.005,
+             note: "...and on the 10 biggest yen-strength days (USD/JPY down)"}
+          - {type: event_mean, event: {series: USDJPY, direction: down}, n: 10, ticker: 9984.T, op: "<", threshold: -0.01,
+             note: "SoftBank falls >1% on average on the 10 biggest yen-strength days"}
+      - id: H2.T3
+        name: Credit spillover - HY spread widening alongside rising long-end yields
+        type: all_of
+        conditions:
+          - {type: series_change, series: US_HY_OAS, window_days: 60, op: ">", threshold: 0.25}
+          - {type: series_change, series: US_30Y, window_days: 60, op: ">", threshold: 0.15}
+    confirm_signals:
+      - {id: H2.C1, name: Fed hike, type: series_change, series: FED_UPPER, window_days: 45, op: ">", threshold: 0.0}
+      - {id: H2.C2, name: Fed hawkish hold, kind: manual, how: "Read latest FOMC statement / dot plot"}
+      - {id: H2.C3, name: JGB 30y keeps rising, type: series_change, series: JGB_30Y, window_days: 20, op: ">", threshold: 0.10}
+      - {id: H2.C4, name: USD/JPY falling sharply, type: series_change_pct, series: USDJPY, window_days: 20, op: "<", threshold: -0.03}
+    kill_signals:
+      - {id: H2.K1, name: Fed cuts, type: series_change, series: FED_UPPER, window_days: 45, op: "<", threshold: 0.0}
+      - id: H2.K2
+        name: Hormuz reopening / Iran deal collapses diesel and inflation expectations
+        type: all_of
+        conditions:
+          - {type: series_change_pct, series: DIESEL_NYH, window_days: 30, op: "<", threshold: -0.15}
+          - {type: series_change, series: US_BE10, window_days: 30, op: "<", threshold: -0.15}
+    catalysts:
+      - {name: FOMC meetings, source: fed_calendar}
+      - {name: BoJ Monetary Policy Meetings, source: boj_calendar}
+      - {name: US CPI release, source: bls_calendar}
+      - {name: SoftBank and leveraged-group earnings, source: yfinance_earnings_dates}
+
+# Macro series used above. Source order = try first, then fallback.
+series:
+  US_2Y:      {sources: [fred:DGS2]}
+  US_10Y:     {sources: [fred:DGS10]}
+  US_30Y:     {sources: [fred:DGS30]}
+  US_BE10:    {sources: [fred:T10YIE]}
+  US_HY_OAS:  {sources: [fred:BAMLH0A0HYM2]}
+  FED_UPPER:  {sources: [fred:DFEDTARU]}
+  US_CPI:     {sources: [fred:CPIAUCSL]}
+  DIESEL_NYH: {sources: [fred:DDFUELNYH]}
+  BRENT:      {sources: [fred:DCOILBRENTEU, yahoo:BZ=F]}
+  JGB_10Y:    {sources: [mof:10Y, fred:IRLTLT01JPM156N]}   # FRED is monthly: fallback only
+  JGB_30Y:    {sources: [mof:30Y]}
+  USDJPY:     {sources: [yahoo:JPY=X, fred:DEXJPUS]}
+  USDTHB:     {sources: [yahoo:THB=X, fred:DEXTHUS]}

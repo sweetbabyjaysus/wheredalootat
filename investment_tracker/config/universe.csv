@@ -1,0 +1,18 @@
+bucket,group,company,ticker,alt_tickers,exchange,currency,fundamentals_source,fiscal_year_end,rationale
+Bottleneck,Memory,Sandisk,SNDK,,NASDAQ,USD,sec,Jun,NAND long-term contracts; Bristlemoon holding (newsletter claim). Spun off from WDC Feb-2025 so history is short
+Bottleneck,Memory,SK Hynix,000660.KS,,KRX,KRW,yfinance_quarterly,Dec,HBM leader; exposed to China CXMT memory claims
+Bottleneck,Memory,Samsung Electronics,005930.KS,,KRX,KRW,yfinance_quarterly,Dec,Commodity DRAM/NAND plus HBM catch-up; exposed to CXMT claims
+Bottleneck,Lithography & equipment,ASML,ASML,ASML.AS,NASDAQ,USD,sec,Dec,EUV monopoly; Bristlemoon core long (newsletter claim)
+Bottleneck,Lithography & equipment,Lam Research,LRCX,,NASDAQ,USD,sec,Jun,Etch/deposition; Bristlemoon Q3 contributor (newsletter claim)
+Bottleneck,Lithography & equipment,Tokyo Electron,8035.T,TOELY,TSE,JPY,yfinance_quarterly,Mar,Front-end equipment; newsletter says -7.2% on 2026-10-16 sell-off
+Bottleneck,Foundry,TSMC,TSM,2330.TW,NYSE,USD,sec,Dec,Leading-edge foundry; newsletter says record +69% quarterly profit; canary for the trade
+Bottleneck,Power semis,Infineon,IFX.DE,IFNNY,XETRA,EUR,yfinance_quarterly,Sep,800V data-centre power architecture
+Bottleneck,Power & engines,FTAI Aviation,FTAI,,NASDAQ,USD,sec,Dec,Aero-derivative gas turbines for data-centre power (FTAI Power)
+Bottleneck,Power & engines,AerCap,AER,,NYSE,USD,sec,Dec,Engine sales into power; aircraft shortage
+Compute leader,Compute,NVIDIA,NVDA,,NASDAQ,USD,sec,Jan,AI accelerator leader; Bristlemoon holding (newsletter claim)
+Hyperscaler,Hyperscaler,Alphabet,GOOGL,,NASDAQ,USD,sec,Dec,Cash-rich hyperscaler; newsletter claims 49% after-tax return on capex in service
+Leveraged buildout,Neocloud,CoreWeave,CRWV,,NASDAQ,USD,sec,Dec,Debt-funded GPU cloud; newsletter says bond yield 9.6% -> 15%. IPO Mar-2025 so history is short
+Leveraged buildout,Debt-funded builder,Oracle,ORCL,,NYSE,USD,sec,May,Debt-funded OCI buildout; newsletter says -9% in the sell-off
+Leveraged buildout,Neocloud,Nebius,NBIS,,NASDAQ,USD,sec,Dec,GPU cloud (ex-Yandex NV); newsletter says -20% in the sell-off
+Leveraged buildout,Neocloud,IREN,IREN,,NASDAQ,USD,sec,Jun,Ex-bitcoin miner pivoting to AI cloud; newsletter says -25% in the sell-off
+Leveraged buildout,Debt-funded builder,SoftBank Group,9984.T,SFTBY,TSE,JPY,yfinance_quarterly,Mar,Levered AI holdco (OpenAI/Stargate); yen-carry indicator for H2; newsletter says -9%

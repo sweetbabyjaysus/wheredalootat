@@ -1,0 +1,25 @@
+base_currency: USD
+secondary_currency: THB          # group returns are also shown in THB
+price_history_years: 2           # analysis window
+fetch_history_years: 4           # extra history so 3-year multiple averages can be computed
+quarters: 8
+news_days: 30
+
+# SEC requires a User-Agent with a contact email. Set it in the environment so it is
+# never committed:   export SEC_USER_AGENT="Your Name you@example.com"
+sec_user_agent_env: SEC_USER_AGENT
+
+# News scoring: "lexicon" works offline; "claude" uses the Anthropic API if
+# ANTHROPIC_API_KEY is set (better rationales). Each headline gets a score in [-1, 1].
+news_scorer: lexicon
+
+sentiment_score_weights:         # z-score blend, signs so that higher = more bullish
+  analyst_rating: 1.0            # yfinance recommendationMean, inverted (1 = strong buy)
+  eps_revision_90d: 1.0
+  short_interest: -1.0
+  news: 1.0
+fundamentals_score_weights:
+  revenue_yoy: 1.0
+  operating_margin_chg_4q: 1.0
+  fcf_margin: 1.0
+divergence_z_gap: 1.0            # |sentiment - fundamentals| above this is flagged

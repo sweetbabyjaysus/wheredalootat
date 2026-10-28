@@ -1,0 +1,6 @@
+yfinance>=0.2.50
+pandas>=2.0
+requests
+PyYAML
+openpyxl
+matplotlib

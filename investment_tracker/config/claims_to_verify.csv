@@ -1,0 +1,12 @@
+claim_id,subject,claim,check_type,params,source_of_claim
+TEL_OCT16,8035.T,Tokyo Electron fell 7.2% in the Oct 16 AI credit sell-off,one_day_return,date=2026-10-16;expected=-0.072;tol=0.005,newsletter
+ORCL_SELLOFF,ORCL,Oracle fell 9% in the sell-off,one_day_return,date=2026-10-16;expected=-0.09;tol=0.01;also_window=2026-10-09:2026-10-23,newsletter
+NBIS_SELLOFF,NBIS,Nebius fell 20% in the sell-off,one_day_return,date=2026-10-16;expected=-0.20;tol=0.02;also_window=2026-10-09:2026-10-23,newsletter
+IREN_SELLOFF,IREN,IREN fell 25% in the sell-off,one_day_return,date=2026-10-16;expected=-0.25;tol=0.02;also_window=2026-10-09:2026-10-23,newsletter
+SFTB_SELLOFF,9984.T,SoftBank fell 9% in the sell-off,one_day_return,date=2026-10-16;expected=-0.09;tol=0.01;also_window=2026-10-09:2026-10-23,newsletter
+TSMC_PROFIT,TSM,Record +69% YoY quarterly profit,latest_quarter_yoy,concept=net_income;expected=0.69;tol=0.03,newsletter
+CRWV_BOND,CRWV,Bond yield went from 9.6% to 15%,manual,"No free bond-yield feed; check FINRA TRACE",newsletter
+GOOGL_ROIC,GOOGL,49% after-tax return on capex in service,manual,"Definition not standard; not recomputed. Inference would be needed",newsletter
+US_CPI_3_7,MACRO,US CPI inflation is 3.7%,series_yoy,series=US_CPI;expected=0.037;tol=0.002,H2 statement
+US10Y_ABOVE_5_2,MACRO,US 10-year above 5.2%,series_level,series=US_10Y;op=>;threshold=5.2,H2 statement
+JGB_RECORD,MACRO,JGB yields at record highs,series_at_max,series=JGB_30Y;lookback=all,H2 statement
