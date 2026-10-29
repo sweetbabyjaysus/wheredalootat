@@ -1,7 +1,7 @@
 """Validate a transcribed backfill CSV against yfinance quarters, then append it to
 data/fundamentals_manual.csv.
 
-    python scripts/import_backfill.py path/to/TICKER.csv [--apply]
+    python scripts/import_backfill.py path/to/TICKER.csv [--apply] [--accept field@YYYY-MM-DD ...]
 
 Overlap check: for each (period_end, field) present in both the backfill and
 data/fundamentals_store.csv (yfinance), report the % difference. Revenue, operating income,
@@ -9,6 +9,10 @@ net income and cash must agree within 2% or nothing is imported. Any other field
 more than 5% on the overlap uses a different definition (e.g. debt incl./excl. leases, capex
 lines); it is NOT imported, so a series never splices two definitions. Without --apply nothing
 is written.
+
+yfinance's cash line already includes short-term investments, so cash is compared as
+backfill cash + short_term_investments. --accept field@date overrides a strict mismatch where the
+filing value is confirmed by a second filing (say so in the row's note); it is printed in the log.
 """
 import _path  # noqa: F401
 import sys
@@ -30,9 +34,18 @@ def main(path, apply=False):
     if new.source_url.isna().any() or (new.source_url.astype(str).str.len() < 10).any():
         raise SystemExit("every row needs a source_url")
     store = pd.read_csv(STORE, dtype={"ticker": str})
-    m = new.merge(store, on=["ticker", "period_end", "field"], suffixes=("", "_yf"))
+    cmp = new.copy()
+    sti = new[new.field == "short_term_investments"].set_index("period_end")["value"]
+    is_cash = cmp.field == "cash"
+    cmp.loc[is_cash, "value"] = cmp.loc[is_cash, "value"] + cmp.loc[is_cash, "period_end"].map(sti).fillna(0)
+    m = cmp.merge(store, on=["ticker", "period_end", "field"], suffixes=("", "_yf"))
     m["pct_diff"] = (m.value - m.value_yf) / m.value_yf.abs()
+    accept = {a for a in sys.argv if "@" in a}
     bad = m[m.field.isin(STRICT) & (m.pct_diff.abs() > 0.02)]
+    over = bad[(bad.field + "@" + bad.period_end).isin(accept)]
+    for _, r in over.iterrows():
+        print(f"ACCEPTED override {r.field}@{r.period_end}: filing {r.value:,.0f} vs yfinance {r.value_yf:,.0f}")
+    bad = bad.drop(over.index)
     pd.set_option("display.width", 200)
     print(f"{len(new)} rows; {len(m)} overlap with yfinance")
     if len(m):

@@ -133,9 +133,16 @@ def build(universe: pd.DataFrame, hyp: dict, settings: dict, log=print) -> Datas
                 if s.empty:
                     L.gap(tk, k, "not computable from available quarters")
                     continue
+                if (f.index[-1] - s.index[-1]).days > 100:
+                    L.gap(tk, k, f"latest computable value is from {s.index[-1].date()}, over a quarter older "
+                                 f"than the latest quarter {f.index[-1].date()}; not used as current")
+                    continue
                 snap[k] = float(s.iloc[-1])
                 snap[k + "_asof"] = s.index[-1].date().isoformat()
-                L.add(tk, k, snap[k], "computed from merged quarterly fundamentals", s.index[-1].date(), note="computed")
+                note = "computed"
+                if k.startswith("net_debt_to_ebitda") and snap[k] == 99.0:
+                    note = "computed; capped at 99x because TTM EBITDA <= 0 with positive net debt"
+                L.add(tk, k, snap[k], "computed from merged quarterly fundamentals", s.index[-1].date(), note=note)
 
             raw_info = cached(f"info:{tk}", lambda: None) or {}
             vtk, _ = _valuation_listing(row, raw_info, L)
@@ -176,24 +183,21 @@ def build(universe: pd.DataFrame, hyp: dict, settings: dict, log=print) -> Datas
 
 
 def _current_multiples(tk, vtk, vpx, shares, f, vh, snap, L):
+    """Current TTM multiples. Each uses the latest quarter where its own denominator exists."""
     f = f.assign(net_debt=f["net_debt"].ffill(limit=1))
-    last = f.dropna(subset=["revenue_ttm"]).iloc[-1] if f["revenue_ttm"].notna().any() else None
-    if last is None:
-        L.gap(tk, "ttm_multiples", "no complete trailing-12-month revenue")
-        return
     mcap = vpx.iloc[-1] * shares.iloc[-1]
-    ev = mcap + last.net_debt if pd.notna(last.net_debt) else float("nan")
     src = f"computed: {vtk} price x yfinance shares + latest net debt, over TTM fundamentals"
-    cur = {"ev_sales_ttm": ev / last.revenue_ttm if last.revenue_ttm > 0 else float("nan"),
-           "ev_ebitda_ttm": ev / last.ebitda_ttm if pd.notna(last.ebitda_ttm) and last.ebitda_ttm > 0 else float("nan"),
-           "pe_ttm": mcap / last.net_income_ttm if pd.notna(last.net_income_ttm) and last.net_income_ttm > 0 else float("nan")}
     today = dt.date.today()
     three_y = vh[vh.index >= pd.Timestamp.today() - pd.Timedelta(days=365 * 3)] if not vh.empty else vh
-    for k, v in cur.items():
-        if pd.isna(v):
-            L.gap(tk, k, "denominator <= 0 or missing (loss-making or no data)")
+    for k, den, use_ev in (("ev_sales_ttm", "revenue_ttm", True), ("ev_ebitda_ttm", "ebitda_ttm", True),
+                           ("pe_ttm", "net_income_ttm", False)):
+        rows = f.dropna(subset=[den] + (["net_debt"] if use_ev else []))
+        if rows.empty or rows.iloc[-1][den] <= 0 or (f.index[-1] - rows.index[-1]).days > 100:
+            L.gap(tk, k, "denominator <= 0, missing, or older than one quarter (loss-making or no data)")
             continue
-        snap[k] = L.add(tk, k, float(v), src, today, "x", "computed")
+        r = rows.iloc[-1]
+        v = (mcap + r.net_debt if use_ev else mcap) / r[den]
+        snap[k] = L.add(tk, k, float(v), src + f" (fundamentals as of {rows.index[-1].date()})", today, "x", "computed")
         hist = three_y[k].dropna() if not three_y.empty and k in three_y else pd.Series(dtype=float)
         if len(hist) >= 8:
             snap[k + "_3y_avg"] = L.add(tk, k + "_3y_avg", float(hist.mean()), src + f"; mean of {len(hist)} quarter-ends",

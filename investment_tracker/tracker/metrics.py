@@ -7,6 +7,8 @@ from __future__ import annotations
 
 import pandas as pd
 
+ND_EBITDA_CAP = 99.0
+
 
 def lag(s: pd.Series, quarters: int, tol_days: int = 25) -> pd.Series:
     s = s.dropna()
@@ -59,7 +61,10 @@ def fundamentals_table(q: pd.DataFrame) -> pd.DataFrame:
     out["interest_coverage_ttm"] = re_(ttm(g("operating_income"))) / re_(ttm(g("interest_expense").abs()))
     out["fcf_margin_ttm"] = out["fcf_ttm"] / out["revenue_ttm"]
     out["fcf_margin"] = out["fcf"] / rev
-    out["net_debt_to_ebitda"] = (out["net_debt"] / out["ebitda_ttm"]).where(out["ebitda_ttm"] > 0)
+    nd_e = (out["net_debt"] / out["ebitda_ttm"]).where(out["ebitda_ttm"] > 0)
+    # EBITDA <= 0 with positive net debt: leverage is worse than any finite multiple. Cap at 99x
+    # (a labelled convention) so medians and rankings treat it as the worst case, not as missing.
+    out["net_debt_to_ebitda"] = nd_e.mask((out["ebitda_ttm"] <= 0) & (out["net_debt"] > 0), ND_EBITDA_CAP)
     out["net_debt_to_ebitda_chg_4q"] = out["net_debt_to_ebitda"] - re_(lag(out["net_debt_to_ebitda"], 4))
     out["debt_chg_4q"] = debt / re_(lag(debt, 4)) - 1
     out["revenue_yoy_chg_2q"] = out["revenue_yoy"] - re_(lag(out["revenue_yoy"], 2))

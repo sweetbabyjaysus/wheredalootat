@@ -65,8 +65,8 @@ hypotheses:
              note: "Bottleneck median revenue growth >=15% YoY in latest quarter"}
           - {type: group_value, metric: revenue_yoy_chg_2q, group: bottleneck, op: ">=", threshold: -0.05,
              note: "...and not down more than 5pp vs two quarters earlier (holding)"}
-          - {type: group_value, metric: ev_ebitda_vs_3y_avg, group: bottleneck, op: "<", threshold: 0.0,
-             note: "Bottleneck median EV/EBITDA (TTM) below its own 3-year average"}
+          - {type: group_value, metric: ev_sales_vs_3y_avg, group: bottleneck, op: "<", threshold: 0.0,
+             note: "Bottleneck median EV/sales (TTM) below its own 3-year average. EV/sales, not EV/EBITDA, because EBITDA is undefined for lessors (AER) and loss-makers"}
     confirm_signals:
       - {id: H1.C1, name: Credit spreads keep widening (proxy), type: series_change, series: US_HY_OAS, window_days: 20, op: ">", threshold: 0.10}
       - {id: H1.C2, name: Neocloud bond yields keep rising (CoreWeave notes), kind: manual,
