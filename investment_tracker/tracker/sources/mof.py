@@ -12,7 +12,9 @@ URLS = [f"{BASE}/historical/jgbcme_all.csv", f"{BASE}/jgbcme.csv"]  # history + 
 ERA = {"S": 1925, "H": 1988, "R": 2018}
 
 
-def _parse_date(s: str):
+def _parse_date(s):
+    if not isinstance(s, str):
+        return pd.NaT
     s = s.strip()
     m = re.match(r"^([SHR])(\d+)\.(\d+)\.(\d+)$", s)
     if m:

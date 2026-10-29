@@ -12,6 +12,8 @@ import functools
 import pandas as pd
 import requests
 
+from ..cache import cached
+
 from ..provenance import Ledger
 
 TICKERS_URL = "https://www.sec.gov/files/company_tickers.json"
@@ -69,9 +71,11 @@ def cik(ticker: str, user_agent: str):
 
 
 def companyfacts(cik_: int, user_agent: str) -> dict:
-    r = _session(user_agent).get(FACTS_URL.format(cik=cik_), timeout=60)
-    r.raise_for_status()
-    return r.json()
+    def get():
+        r = _session(user_agent).get(FACTS_URL.format(cik=cik_), timeout=60)
+        r.raise_for_status()
+        return r.json()
+    return cached(f"secfacts:{cik_}", get)
 
 
 def _facts(cf: dict, concept: str):
@@ -98,7 +102,7 @@ def _facts(cf: dict, concept: str):
 def _quarters_from_durations(df: pd.DataFrame) -> pd.Series:
     """Single-quarter values keyed by period end, from direct 3-month facts or YTD differences."""
     df = df.assign(days=(df["end"] - df["start"]).dt.days)
-    direct = df[df.days.between(80, 100)].set_index("end")["val"]
+    direct = df[df.days.between(80, 100)].sort_values("filed").drop_duplicates("end", keep="last").set_index("end")["val"]
     derived = {}
     for _, g in df.groupby("start"):
         g = g.sort_values("end")
@@ -108,11 +112,11 @@ def _quarters_from_durations(df: pd.DataFrame) -> pd.Series:
                 derived[r["end"]] = r["val"] - prev["val"]
             prev = r
     out = pd.Series(derived, dtype=float)
-    out = out[~out.index.isin(direct.index)]
+    out = out[~out.index.duplicated(keep="last") & ~out.index.isin(direct.index)]
     return pd.concat([direct.astype(float), out]).sort_index(), set(out.index)
 
 
-def quarterly(ticker: str, user_agent: str, ledger: Ledger, n_quarters: int = 12) -> pd.DataFrame:
+def quarterly(ticker: str, user_agent: str, ledger: Ledger, n_quarters: int = 20) -> pd.DataFrame:
     c = cik(ticker, user_agent)
     if c is None:
         ledger.gap(ticker, "sec_cik", "ticker not in SEC company_tickers.json")
@@ -139,7 +143,8 @@ def quarterly(ticker: str, user_agent: str, ledger: Ledger, n_quarters: int = 12
         if merged.empty:
             ledger.gap(ticker, field, f"none of {concepts} in SEC companyfacts")
             continue
-        merged = merged.sort_index().iloc[-n_quarters:]
+        merged = merged[~merged.index.duplicated(keep="last")].sort_index().iloc[-n_quarters:]
+        merged.index = pd.DatetimeIndex(merged.index.values)  # drop inferred freq (pandas union bug)
         cols[field] = merged
         for d, v in merged.items():
             src, unit, note = origin[d]
@@ -147,8 +152,4 @@ def quarterly(ticker: str, user_agent: str, ledger: Ledger, n_quarters: int = 12
     out = pd.DataFrame(cols).sort_index()
     if "debt_total" not in out and {"debt_noncurrent", "debt_current"} & set(out):
         out["debt_total"] = out.get("debt_noncurrent", 0).fillna(0) + out.get("debt_current", 0).fillna(0)
-    if "revenue" in out and out["revenue"].notna().sum() < 8:
-        ledger.gap(ticker, "fundamentals_quarters",
-                   f"SEC XBRL gives {int(out['revenue'].notna().sum())} quarterly revenue points "
-                   "(20-F filers report semi-annually; recent IPOs/spin-offs have short history)")
     return out
