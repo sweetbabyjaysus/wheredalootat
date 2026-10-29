@@ -79,7 +79,8 @@ def analyst(ticker: str, ledger: Ledger) -> dict:
         row = tr.loc["+1y"]
         for d in (30, 90):
             base = row.get(f"{d}daysAgo")
-            v = (row["current"] / base - 1) if base else None
+            # divide by |base| so the sign means "estimates went up" even when EPS < 0
+            v = (row["current"] - base) / abs(base) if base else None
             out[f"eps_revision_{d}d"] = ledger.add(
                 ticker, f"eps_revision_{d}d", v, "yfinance:eps_trend[+1y]", today, "ratio",
                 "next-fiscal-year EPS used as NTM proxy")
@@ -115,6 +116,14 @@ def next_earnings(ticker: str, ledger: Ledger):
         if fut:
             d = min(fut).date().isoformat()
             return ledger.add(ticker, "next_earnings", d, "yfinance:get_earnings_dates", dt.date.today())
+    except Exception:
+        pass
+    try:  # fallback: Ticker.calendar
+        cal = yf.Ticker(ticker).calendar or {}
+        fut = [d for d in cal.get("Earnings Date", []) if pd.Timestamp(d) >= pd.Timestamp.today().normalize()]
+        if fut:
+            return ledger.add(ticker, "next_earnings", min(fut).isoformat(), "yfinance:calendar", dt.date.today(),
+                              note="may be an estimate; yfinance does not flag confirmed vs projected")
     except Exception:
         pass
     ledger.gap(ticker, "next_earnings", "no future earnings date on yfinance")

@@ -13,12 +13,15 @@ RSS = "https://news.google.com/rss/search"
 
 POS = {"beat": .6, "beats": .6, "record": .5, "surge": .6, "surges": .6, "soar": .7, "soars": .7, "rally": .5,
        "upgrade": .6, "upgrades": .6, "raises": .5, "raised": .4, "strong": .4, "outperform": .5, "wins": .4,
-       "deal": .3, "contract": .3, "growth": .3, "jumps": .5, "gains": .4, "boost": .4, "demand": .2}
+       "deal": .3, "rises": .4, "rise": .3, "climbs": .4, "higher": .2, "buy": .3, "bullish": .5, "rebound": .4,
+       "rebounds": .4, "expands": .3, "partnership": .3, "contract": .3, "growth": .3, "jumps": .5, "gains": .4, "boost": .4, "demand": .2}
 NEG = {"miss": -.6, "misses": -.6, "plunge": -.7, "plunges": -.7, "slump": -.6, "falls": -.4, "drop": -.4,
        "drops": -.4, "downgrade": -.6, "downgrades": -.6, "cut": -.4, "cuts": -.4, "probe": -.5, "lawsuit": -.5,
        "default": -.8, "debt": -.2, "selloff": -.5, "sell-off": -.5, "warning": -.5, "warns": -.5, "weak": -.4,
        "loss": -.4, "losses": -.4, "tumble": -.6, "tumbles": -.6, "bubble": -.4, "concerns": -.3, "fears": -.4,
-       "ban": -.5, "tariff": -.3, "tariffs": -.3, "spreads": -.2, "widen": -.3}
+       "ban": -.5, "sinks": -.5, "sink": -.5, "plummet": -.7, "plummets": -.7, "slides": -.4, "slide": -.4,
+       "worries": -.4, "worry": -.4, "scare": -.4, "crosshairs": -.3, "crash": -.7, "crashes": -.7, "sell": -.2,
+       "dilution": -.4, "lower": -.2, "slashes": -.5, "rout": -.6, "short": -.2, "risk": -.2, "risks": -.2, "tariff": -.3, "tariffs": -.3, "spreads": -.2, "widen": -.3}
 
 
 def headlines(company: str, ticker: str, days: int) -> list[dict]:

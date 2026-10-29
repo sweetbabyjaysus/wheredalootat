@@ -31,7 +31,9 @@ CONCEPTS = {
     "capex": ["PaymentsToAcquirePropertyPlantAndEquipment", "PaymentsToAcquireProductiveAssets",
               "PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities"],
     # instants
-    "debt_total": ["LongTermDebt", "DebtAndCapitalLeaseObligations", "LongTermDebtAndCapitalLeaseObligations"],
+    "debt_total": ["LongTermDebt", "DebtAndCapitalLeaseObligations", "LongTermDebtAndCapitalLeaseObligations",
+                   "DebtInstrumentCarryingAmount"],
+    "finance_lease_liability": ["FinanceLeaseLiability"],
     "debt_noncurrent": ["LongTermDebtNoncurrent", "LongTermDebtAndCapitalLeaseObligationsNoncurrent",
                         "NoncurrentPortionOfNoncurrentBorrowings"],
     "debt_current": ["LongTermDebtCurrent", "LongTermDebtAndCapitalLeaseObligationsCurrent",
@@ -43,7 +45,7 @@ CONCEPTS = {
     "maturity_next_12m": ["LongTermDebtMaturitiesRepaymentsOfPrincipalInNextTwelveMonths"],
     "maturity_year_2": ["LongTermDebtMaturitiesRepaymentsOfPrincipalInYearTwo"],
 }
-INSTANT = {"debt_total", "debt_noncurrent", "debt_current", "short_term_borrowings", "cash",
+INSTANT = {"debt_total", "finance_lease_liability", "debt_noncurrent", "debt_current", "short_term_borrowings", "cash",
            "short_term_investments", "maturity_next_12m", "maturity_year_2"}
 FORMS = {"10-Q", "10-K", "20-F", "6-K", "40-F", "10-K/A", "10-Q/A", "20-F/A"}
 
@@ -118,6 +120,8 @@ def quarterly(ticker: str, user_agent: str, ledger: Ledger, n_quarters: int = 12
     cf = companyfacts(c, user_agent)
     cols = {}
     for field, concepts in CONCEPTS.items():
+        # Companies switch tags over time, so coalesce per date in priority order.
+        merged, origin = pd.Series(dtype=float), {}
         for concept in concepts:
             tax, unit, df = _facts(cf, concept)
             if df is None:
@@ -128,16 +132,18 @@ def quarterly(ticker: str, user_agent: str, ledger: Ledger, n_quarters: int = 12
                 if "start" not in df:
                     continue
                 s, derived = _quarters_from_durations(df)
-            if s.empty:
-                continue
-            s = s.iloc[-n_quarters:]
-            cols[field] = s
-            for d, v in s.items():
-                ledger.add(ticker, f"q:{field}", float(v), f"SEC companyfacts {tax}:{concept} (CIK {c})",
-                           d.date(), unit, "computed: YTD difference" if d in derived else "")
-            break
-        else:
+            for d in s.index.difference(merged.index):
+                origin[d] = (f"SEC companyfacts {tax}:{concept} (CIK {c})", unit,
+                             "computed: YTD difference" if d in derived else "")
+            merged = s.combine_first(merged) if merged.empty else merged.combine_first(s)
+        if merged.empty:
             ledger.gap(ticker, field, f"none of {concepts} in SEC companyfacts")
+            continue
+        merged = merged.sort_index().iloc[-n_quarters:]
+        cols[field] = merged
+        for d, v in merged.items():
+            src, unit, note = origin[d]
+            ledger.add(ticker, f"q:{field}", float(v), src, d.date(), unit, note)
     out = pd.DataFrame(cols).sort_index()
     if "debt_total" not in out and {"debt_noncurrent", "debt_current"} & set(out):
         out["debt_total"] = out.get("debt_noncurrent", 0).fillna(0) + out.get("debt_current", 0).fillna(0)

@@ -18,6 +18,10 @@ EXCH = {"NMS": "NASDAQ", "NGM": "NASDAQ", "NCM": "NASDAQ", "NYQ": "NYSE", "KSC":
         "TYO": "TSE", "GER": "XETRA", "ETR": "XETRA", "TAI": "TWSE", "AMS": "AEX", "PNK": "OTC"}
 
 
+def acronym(s):
+    return "".join(w[0] for w in re.findall(r"[A-Za-z]+", s)).lower()
+
+
 def norm(s):
     return set(re.findall(r"[a-z]{3,}", s.lower())) - {"inc", "ltd", "corp", "co", "group", "holdings", "the", "plc"}
 
@@ -37,7 +41,7 @@ def main():
                 row["issues"].append(f"fetch error {type(e).__name__}")
             if not info.get("regularMarketPrice") and hist.empty:
                 row["issues"].append("NOT FOUND on yfinance")
-            row.update(yf_name=info.get("longName"), yf_exchange=EXCH.get(info.get("exchange"), info.get("exchange")),
+            row.update(yf_name=info.get("longName") or info.get("shortName"), yf_exchange=EXCH.get(info.get("exchange"), info.get("exchange")),
                        yf_currency=info.get("currency"), quote_type=info.get("quoteType"),
                        last_price=info.get("regularMarketPrice"),
                        first_bar=hist.index[0].date().isoformat() if not hist.empty else None)
@@ -46,7 +50,7 @@ def main():
                     row["issues"].append(f"currency {row['yf_currency']} != config {r.currency}")
                 if row["yf_exchange"] and row["yf_exchange"] != r.exchange:
                     row["issues"].append(f"exchange {row['yf_exchange']} != config {r.exchange}")
-                if row["yf_name"] and not (norm(row["yf_name"]) & norm(r.company)):
+                if row["yf_name"] and not (norm(row["yf_name"]) & norm(r.company)) and not acronym(row["yf_name"]).startswith(r.company.lower()):
                     row["issues"].append(f"name '{row['yf_name']}' does not match '{r.company}'")
                 if row["first_bar"] and dt.date.fromisoformat(row["first_bar"]) > two_years_ago + dt.timedelta(days=7):
                     row["issues"].append(f"history starts {row['first_bar']} (<2y)")
