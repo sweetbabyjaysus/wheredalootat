@@ -108,7 +108,7 @@ def main(full: bool):
         allp = pd.concat([old, new])
     else:
         allp = new
-    allp = allp.sort_values("date", ascending=False).drop_duplicates("id")
+    allp = allp.drop_duplicates("id").sort_values(["date", "id"], ascending=False, kind="stable")
     INDEX.parent.mkdir(exist_ok=True)
     allp.to_csv(INDEX, index=False)
     write_digest(allp, new)
