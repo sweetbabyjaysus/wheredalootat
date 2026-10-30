@@ -27,6 +27,7 @@ def history(ticker: str, years: int, ledger: Ledger) -> pd.DataFrame:
         ledger.gap(ticker, "price_history", "yfinance returned no prices")
         return df
     df.index = df.index.tz_localize(None).normalize()
+    df = df[df["Close"].notna()]
     first = df.index[0].date()
     if first > dt.date.today() - dt.timedelta(days=365 * 2 - 7):
         ledger.gap(ticker, "price_history", f"history starts {first}; shorter than 2 years")
@@ -183,7 +184,7 @@ def fx_per_usd(ccy: str, years: int, ledger: Ledger) -> pd.Series:
     if df.empty:
         ledger.gap(ccy, "fx", f"Yahoo {ccy}=X returned nothing")
         return None
-    s = df["Close"]
+    s = df["Close"].dropna()
     s.index = s.index.tz_localize(None).normalize()
     return s[~s.index.duplicated(keep="last")]
 
@@ -203,6 +204,6 @@ def shares_history(ticker: str, years: int, ledger: Ledger) -> pd.Series:
 
 def close_series(symbol: str, years: int) -> pd.Series:
     df = cached(f"hist:{symbol}:{years}", lambda: yf.Ticker(symbol).history(period=f"{years}y", auto_adjust=True))
-    s = df["Close"]
+    s = df["Close"].dropna()
     s.index = s.index.tz_localize(None).normalize()
     return s[~s.index.duplicated(keep="last")]

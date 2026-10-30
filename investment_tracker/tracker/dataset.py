@@ -185,6 +185,7 @@ def build(universe: pd.DataFrame, hyp: dict, settings: dict, log=print) -> Datas
 def _current_multiples(tk, vtk, vpx, shares, f, vh, snap, L):
     """Current TTM multiples. Each uses the latest quarter where its own denominator exists."""
     f = f.assign(net_debt=f["net_debt"].ffill(limit=1))
+    vpx, shares = vpx.dropna(), shares.dropna()   # Yahoo can return an empty bar for the current session
     mcap = vpx.iloc[-1] * shares.iloc[-1]
     src = f"computed: {vtk} price x yfinance shares + latest net debt, over TTM fundamentals"
     today = dt.date.today()

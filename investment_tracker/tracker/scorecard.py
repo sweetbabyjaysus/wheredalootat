@@ -99,6 +99,7 @@ def evaluate(c: dict, ctx: Context) -> dict:
         raise ValueError(t)
     if v is None:
         return {"status": "n/a", "value": None, "detail": d, "label": label, "op": c["op"], "threshold": c["threshold"]}
+    v = round(v, 9)  # yields/spreads are quoted to 2-3 decimals; don't let float noise decide a threshold
     ok = OPS[c["op"]](v, c["threshold"])
     return {"status": "pass" if ok else "fail", "value": v, "detail": d, "label": label,
             "op": c["op"], "threshold": c["threshold"]}
