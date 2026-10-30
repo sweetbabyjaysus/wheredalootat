@@ -165,7 +165,9 @@ def build(universe: pd.DataFrame, hyp: dict, settings: dict, log=print) -> Datas
 
     if "US_CPI" in ds.macro:
         cpi = ds.macro["US_CPI"].dropna()
-        yoy = (cpi / cpi.shift(12) - 1).dropna() * 100
+        # by date, not by row: FRED's CPI has missing months (e.g. the Oct-2025 shutdown)
+        prior = cpi.reindex(cpi.index - pd.DateOffset(months=12)).values
+        yoy = (pd.Series(cpi.values / prior - 1, index=cpi.index).dropna()) * 100
         ds.macro["US_CPI_YOY"] = yoy.rename("US_CPI_YOY")
         ds.macro_src["US_CPI_YOY"] = "computed from fred:CPIAUCSL (12-month % change)"
         L.add("US_CPI_YOY", "latest", float(yoy.iloc[-1]), "computed from fred:CPIAUCSL", yoy.index[-1].date(), "%", "computed")
