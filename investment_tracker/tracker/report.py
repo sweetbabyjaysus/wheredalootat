@@ -281,7 +281,7 @@ def summary_md(path, asof, sc_results, scores, catalysts: pd.DataFrame, claims: 
         L += ["", "## Newsletter figures that differ from the data"]
         for _, r in diff.iterrows():
             a = r.actual
-            shown = f"{a:+.1%}" if r.check_type in ("move_in_window", "latest_quarter_yoy", "series_yoy") else f"{a:.2f}"
+            shown = f"{a:+.1%}" if r.check_type in ("move_in_window", "latest_quarter_yoy", "series_yoy", "fund_change", "price_vs_prior_high") else f"{a:.2f}"
             L.append(f'- {r.subject}: "{r.claim}". Data: {shown} ({r.detail})')
     L += ["", "Full detail: `tracker.xlsx`; charts in `charts/`."]
     path.write_text("\n".join(L) + "\n")

@@ -82,4 +82,29 @@ def _one(c, p, ds):
         ok = s.iloc[-1] >= mx - 1e-9 or (s.index[-1] - at).days <= 30
         return {"status": "matches" if ok else "differs", "actual": s.iloc[-1],
                 "detail": f"series max {mx:.3f} on {at.date()} over data since {s.index[0].date()}"}
+    if c.check_type == "fund_change":
+        f = ds.fund.get(c.subject)
+        col = p["field"]
+        s = f[col].dropna() if f is not None and col in f else pd.Series(dtype=float)
+        base = s[s.index <= pd.Timestamp(p["from"])]
+        if s.empty or base.empty:
+            return {"status": "no data", "actual": None, "detail": f"no {col} at or before {p['from']}"}
+        actual = s.iloc[-1] / base.iloc[-1] - 1
+        thr = float(p["threshold"])
+        ok = actual > thr if p.get("op", ">") == ">" else actual < thr
+        return {"status": "matches" if ok else "differs", "actual": actual,
+                "detail": f"{col} {base.iloc[-1]:,.0f} ({base.index[-1].date()}) -> {s.iloc[-1]:,.0f} ({s.index[-1].date()}); "
+                          f"test {p.get('op', '>')} {thr:+.0%}"}
+    if c.check_type == "price_vs_prior_high":
+        px = ds.prices.get(c.subject)
+        d = pd.Timestamp(p["date"])
+        if px is None or px[px.index <= d].empty:
+            return {"status": "no data", "actual": None, "detail": "no prices"}
+        at, prior = px[px.index <= d].iloc[-1], px[px.index < d].max()
+        disc = at / prior - 1
+        ok = -float(p["max_discount"]) <= disc <= 0
+        since = px.iloc[-1] / at - 1
+        return {"status": "matches" if ok else "differs", "actual": disc,
+                "detail": f"close {at:.2f} on {px[px.index <= d].index[-1].date()} vs prior high {prior:.2f} "
+                          f"({px[px.index < d].idxmax().date()}); since then {since:+.1%} to {px.iloc[-1]:.2f}"}
     return {"status": "unknown check", "actual": None, "detail": c.check_type}
