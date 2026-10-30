@@ -74,6 +74,8 @@ hypotheses:
       - {id: H1.C3, name: TSMC orders hold - monthly revenue YoY positive, kind: manual,
          how: "TSMC monthly revenue release, ~10th of each month (investor.tsmc.com)"}
       - {id: H1.C4, name: ASML bookings hold, kind: manual, how: "ASML quarterly net bookings in results release"}
+      - {id: H1.C5, name: Vendor-financed AI rack leases grow, kind: manual,
+         how: "Broadcom's AI-rack lease backstop (max ~$43bn, 8-K 2026-10-27) rises in later 8-K/10-Q disclosures, or other chip vendors add similar guarantees"}
     kill_signals:
       - {id: H1.K1, name: Spreads tighten back, type: series_change, series: US_HY_OAS, window_days: 60, op: "<", threshold: -0.25}
       - {id: H1.K2, name: Hyperscalers cut capex guidance, kind: manual,

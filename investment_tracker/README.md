@@ -37,6 +37,16 @@ Add a row to `config/universe.csv`:
 A new bucket also needs an alias under `groups:` in `hypotheses.yaml` before tests can refer to it.
 Run `python scripts/ticker_check.py` to confirm the symbol, exchange and currency.
 
+## Add a supplier-customer link
+
+Add a row to `config/relationships.csv` (supplier, customer, relationship, evidence, source_url, as_of).
+Both tickers must be in `universe.csv`. Each run reports, in the `Relationships` and
+`Relationship events` tabs:
+- 90-day and 1-year correlation and beta of supplier returns on customer returns.
+- The supplier's move around each of the customer's last 8 earnings releases. Dates come from
+  the customer's SEC 8-K Item 2.02 filings, and the window runs from the close before the filing to
+  the close after it. US filers only.
+
 ## Add a hypothesis
 
 Add a block under `hypotheses:` in `config/hypotheses.yaml` with `id`, `name`, `statement`, 2-4

@@ -12,7 +12,7 @@ import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from tracker import analysis, claims, report, scorecard  # noqa: E402
+from tracker import analysis, claims, relationships, report, scorecard  # noqa: E402
 from tracker.config import ROOT, load_claims, load_hypotheses, load_settings, load_universe  # noqa: E402
 from tracker.dataset import build  # noqa: E402
 
@@ -47,6 +47,7 @@ def main():
     mc = analysis.macro_changes(ds)
     results = scorecard.run(ds, ct, hyp, prev)
     cl = claims.check(load_claims(), ds)
+    rel_sum, rel_events = relationships.analyse(ds, settings, L)
 
     ev_tables = []
     for series, direction, label in (("JGB_30Y", "up", "10 largest JGB 30y up-days (move in pp)"),
@@ -76,7 +77,7 @@ def main():
     chart_paths = report.charts(ds, sc, ROOT / "charts", asof)
     (ROOT / "snapshots").mkdir(exist_ok=True)
     report.snapshot(ROOT / "snapshots" / f"{today}.json", today, results, ct, sc, mc)
-    report.summary_md(ROOT / "summary.md", today, results, sc, next30, cl, st)
+    report.summary_md(ROOT / "summary.md", today, results, sc, next30, cl, st, rel_sum)
 
     summary_tab = pd.DataFrame(
         [{"item": f"{h['id']} verdict", "value": h["verdict"], "detail": f"{h['why']}; previous: {h['prev_verdict'] or 'n/a'}"} for h in results]
@@ -122,6 +123,10 @@ def main():
          "computed from yfinance + FRED + MoF + Yahoo FX", asof),
         ("Event study", events, "Same-day local-currency group returns on the largest macro-move days",
          "computed from yfinance + MoF + Yahoo FX", asof),
+        ("Relationships", rel_sum, "Supplier-customer links (config/relationships.csv) vs price behaviour",
+         "relationship text: SEC 8-K filings (see sources column); prices: yfinance", asof),
+        ("Relationship events", rel_events, "Supplier move around each customer earnings release (2-day window)",
+         "customer SEC 8-K Item 2.02 dates; yfinance closes", asof),
         ("Newsletter claims", cl, "Newsletter and premise figures checked against data", "config/claims_to_verify.csv", asof),
         ("Catalyst calendar", upcoming, "Upcoming catalysts", "federalreserve.gov; boj.or.jp; FRED (BLS CPI schedule); yfinance", asof),
         ("Headlines", heads, "News headlines scored (lexicon)", "Google News RSS; yfinance news", asof),

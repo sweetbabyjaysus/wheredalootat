@@ -237,7 +237,8 @@ def snapshot(path, asof, sc_results, ct, scores, macro_changes):
     path.write_text(json.dumps(js, indent=1, default=str))
 
 
-def summary_md(path, asof, sc_results, scores, catalysts: pd.DataFrame, claims: pd.DataFrame, sent_trend):
+def summary_md(path, asof, sc_results, scores, catalysts: pd.DataFrame, claims: pd.DataFrame, sent_trend,
+               rel_sum: pd.DataFrame | None = None):
     L = [f"# Hypothesis tracker - {asof}", "",
          "_Research, not trading advice. Items marked **Inference** are interpretation, not data._", ""]
     L.append("## Verdicts")
@@ -263,6 +264,15 @@ def summary_md(path, asof, sc_results, scores, catalysts: pd.DataFrame, claims: 
         up, dn = st.loc[st.change.idxmax()], st.loc[st.change.idxmin()]
         L.append(f"- Sentiment moves since {st.prev_snapshot.iloc[0]}: biggest up {up.company} {up.change:+.2f}, "
                  f"biggest down {dn.company} {dn.change:+.2f}.")
+    if rel_sum is not None and len(rel_sum):
+        L += ["", "## Supplier-customer links"]
+        for _, r in rel_sum.iterrows():
+            line = (f"- **{r.supplier} -> {r.customer}**: 1y correlation {r.corr_1y:.2f}, beta {r.beta_1y:.2f}")
+            if pd.notna(r.get("last_event")):
+                line += (f"; around {r.customer}'s {r.last_event} results {r.customer} moved {r.last_customer_move:+.1%}, "
+                         f"{r.supplier} {r.last_supplier_move:+.1%} (same direction in "
+                         f"{r.same_direction_share:.0%} of the last {int(r.earnings_events)} releases)")
+            L.append(line)
     L += ["", "## Catalysts in the next 30 days"]
     for _, r in catalysts.iterrows():
         L.append(f"- {r.date}: {r.event}")
