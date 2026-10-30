@@ -1,0 +1,18 @@
+# Terms the Stratechery scanner looks for. Each topic maps to what it informs in our analysis.
+# Matching is case-insensitive on word boundaries over title + teaser (+ full text when public).
+# weight: how strongly a hit signals relevance. Companies in universe.csv are added automatically
+# (company name and ticker) with weight 3.
+source:
+  name: Stratechery (Ben Thompson)
+  api: https://stratechery.com/wp-json/wp/v2/posts
+  min_public_words: 300        # below this the API only exposes a teaser (paid Update)
+topics:
+  google_capital:   {weight: 3, informs: [H1, GOOGL], terms: [Alphabet, Google Cloud, TPU, TPUs, Gemini, Waymo, "Google Capital", Berkshire]}
+  hyperscaler_capex: {weight: 3, informs: [H1], terms: [capex, capital expenditures, "capital intensive", depreciation, data center, data centers, hyperscaler, hyperscalers]}
+  neocloud_credit:  {weight: 3, informs: [H1], terms: [neocloud, neoclouds, CoreWeave, Nebius, debt, bond, bonds, credit, financing, leverage, "special purpose vehicle", backstop]}
+  compute_supply:   {weight: 2, informs: [H1], terms: [compute, GPU, GPUs, HBM, memory, DRAM, NAND, EUV, lithography, foundry, "custom silicon", ASIC, ASICs, accelerator, accelerators]}
+  power:            {weight: 2, informs: [H1], terms: [power, gigawatt, gigawatts, electricity, turbine, turbines, grid]}
+  frontier_labs:    {weight: 2, informs: [H1, GOOGL, AVGO], terms: [Anthropic, OpenAI, Stargate, "frontier lab", "frontier labs"]}
+  search_disruption: {weight: 2, informs: [GOOGL], terms: [search, "AI Overviews", "AI Mode", advertising, aggregator, aggregators]}
+  rates_japan:      {weight: 2, informs: [H2], terms: [interest rates, Federal Reserve, yen, Japan, JGB, carry trade, inflation, SoftBank]}
+  bubble:           {weight: 2, informs: [H1, H2], terms: [bubble, bubbles, dilution, "Who Is Paying", overbuild, overbuilding]}
