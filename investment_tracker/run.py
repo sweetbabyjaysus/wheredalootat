@@ -12,7 +12,7 @@ import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from tracker import analysis, claims, relationships, report, scorecard  # noqa: E402
+from tracker import analysis, claims, relationships, report, scorecard, screen  # noqa: E402
 from tracker.config import ROOT, load_claims, load_hypotheses, load_settings, load_universe  # noqa: E402
 from tracker.dataset import build  # noqa: E402
 
@@ -48,6 +48,7 @@ def main():
     results = scorecard.run(ds, ct, hyp, prev)
     cl = claims.check(load_claims(), ds)
     rel_sum, rel_events = relationships.analyse(ds, settings, L)
+    scr = screen.run(ct, sc, prev)
 
     ev_tables = []
     for series, direction, label in (("JGB_30Y", "up", "10 largest JGB 30y up-days (move in pp)"),
@@ -76,8 +77,8 @@ def main():
     asof = today
     chart_paths = report.charts(ds, sc, ROOT / "charts", asof)
     (ROOT / "snapshots").mkdir(exist_ok=True)
-    report.snapshot(ROOT / "snapshots" / f"{today}.json", today, results, ct, sc, mc)
-    report.summary_md(ROOT / "summary.md", today, results, sc, next30, cl, st, rel_sum)
+    report.snapshot(ROOT / "snapshots" / f"{today}.json", today, results, ct, sc, mc, scr)
+    report.summary_md(ROOT / "summary.md", today, results, sc, next30, cl, st, rel_sum, scr)
 
     summary_tab = pd.DataFrame(
         [{"item": f"{h['id']} verdict", "value": h["verdict"], "detail": f"{h['why']}; previous: {h['prev_verdict'] or 'n/a'}"} for h in results]
@@ -111,6 +112,8 @@ def main():
         ("Summary", summary_tab, "Summary", "all sources below", asof),
         ("Hypothesis scorecard", report.scorecard_frame(results), "Hypothesis scorecard",
          "config/hypotheses.yaml tests evaluated on this run's data", asof),
+        ("Screen", scr, "Evidence screen (config/screen.yaml): strongest case on paper. NOT a forecast or recommendation",
+         "Companies + Sentiment matrix tabs; change = vs previous snapshot", asof, True),
         ("Group comparison", gc, "Group medians by bucket (n_ = members with data)", yf_src, asof, True),
         ("Group returns USD-THB", gr, "Group index returns in USD and THB", "yfinance closes; Yahoo THB=X", asof),
         ("Companies", company, "Company snapshot", yf_src, asof, True),

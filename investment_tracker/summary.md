@@ -26,6 +26,15 @@ _Research, not trading advice. Items marked **Inference** are interpretation, no
 - **SPCX -> GOOGL** (supplier (compute)): 1y correlation 0.30, beta 0.64; around GOOGL's 2026-10-28 results GOOGL moved -11.5%, SPCX -3.2% (same direction in 100% of the last 2 releases)
 - **TSLA -> GOOGL** (competitor (robotaxi vs Waymo)): 1y correlation 0.36, beta 0.48; around GOOGL's 2026-10-28 results GOOGL moved -11.5%, TSLA -1.0% (same direction in 75% of the last 8 releases)
 
+## Evidence screen (top names; not a forecast or recommendation)
+
+- Sandisk (SNDK): 6/6 - flags: Very low forward P/E: market may be pricing a cyclical peak; Falling hard: down more than 15% in a month
+- SK Hynix (000660.KS): 6/6 - flags: Very low forward P/E: market may be pricing a cyclical peak; Falling hard: down more than 15% in a month; Target upside above 100%: analyst targets look stale or extreme
+- Samsung Electronics (005930.KS): 6/6 - flags: Very low forward P/E: market may be pricing a cyclical peak; Falling hard: down more than 15% in a month; Target upside above 100%: analyst targets look stale or extreme
+- NVIDIA (NVDA): 6/6
+- ASML (ASML): 6/6
+- TSMC (TSM): 6/6
+
 ## Catalysts in the next 30 days
 - 2026-11-05: Earnings: IREN (IREN)
 - 2026-11-10: Earnings: CoreWeave (CRWV)

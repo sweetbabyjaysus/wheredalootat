@@ -181,7 +181,7 @@ def _write_tab(writer, name, df, title, source, asof, index=False):
             ws.conditional_formatting.add(rng, ColorScaleRule(start_type="percentile", start_value=5, start_color=NEG_FILL,
                                                               mid_type="num", mid_value=0, mid_color=MID_FILL,
                                                               end_type="percentile", end_value=95, end_color=POS_FILL))
-        if nm in ("status", "verdict", "live"):
+        if nm.startswith("chk_") or nm in ("status", "verdict", "live"):
             for v, color in (("pass", POS_FILL), ("fail", NEG_FILL), ("Supported", POS_FILL), ("Not supported", NEG_FILL),
                              ("matches", POS_FILL), ("differs", NEG_FILL), ("True", "FCE7B2")):
                 ws.conditional_formatting.add(rng, CellIsRule(operator="equal", formula=[f'"{v}"'],
@@ -218,7 +218,7 @@ def scorecard_frame(sc_results) -> pd.DataFrame:
 
 # ---------------- snapshot & summary ----------------
 
-def snapshot(path, asof, sc_results, ct, scores, macro_changes):
+def snapshot(path, asof, sc_results, ct, scores, macro_changes, scr=None):
     keep = ["price", "ret_1m", "ret_3m", "ret_ytd", "ret_1y", "pct_from_52w_high", "forward_pe", "ev_ebitda_ttm",
             "revenue_yoy", "operating_margin", "net_debt_to_ebitda", "analyst_rating_mean", "target_upside",
             "eps_revision_90d", "short_pct_float", "news_sentiment", "corr90_us10y"]
@@ -233,12 +233,13 @@ def snapshot(path, asof, sc_results, ct, scores, macro_changes):
                           "tests": {t["id"]: {"status": t["status"], "value": t.get("value")} for t in h["tests"]},
                           "live_signals": [s["id"] for s in h["signals"] if s["live"]]} for h in sc_results],
           "companies": comp,
-          "macro": {r.series: float(r.latest) for r in macro_changes.itertuples()}}
+          "macro": {r.series: float(r.latest) for r in macro_changes.itertuples()},
+          "screen": {} if scr is None else {tk: int(v) for tk, v in scr["passes"].items()}}
     path.write_text(json.dumps(js, indent=1, default=str))
 
 
 def summary_md(path, asof, sc_results, scores, catalysts: pd.DataFrame, claims: pd.DataFrame, sent_trend,
-               rel_sum: pd.DataFrame | None = None):
+               rel_sum: pd.DataFrame | None = None, scr: pd.DataFrame | None = None):
     L = [f"# Hypothesis tracker - {asof}", "",
          "_Research, not trading advice. Items marked **Inference** are interpretation, not data._", ""]
     L.append("## Verdicts")
@@ -273,6 +274,16 @@ def summary_md(path, asof, sc_results, scores, catalysts: pd.DataFrame, claims: 
                          f"{r.supplier} {r.last_supplier_move:+.1%} (same direction in "
                          f"{r.same_direction_share:.0%} of the last {int(r.earnings_events)} releases)")
             L.append(line)
+    if scr is not None and len(scr):
+        n = int(scr["of"].iloc[0])
+        L += ["", f"## Evidence screen (top names; not a forecast or recommendation)", ""]
+        for tk, r in scr.head(6).iterrows():
+            ch = f", {r['change']} vs last run" if r["change"] not in ("", "=") else ""
+            fl = f" - flags: {r['flags']}" if r["flags"] else ""
+            L.append(f"- {r.company} ({tk}): {int(r.passes)}/{n}{ch}{fl}")
+        moved = scr[scr.change.isin([c for c in scr.change.unique() if c not in ('', '=')])]
+        if len(moved):
+            L.append("- Changes since last run: " + ", ".join(f"{tk} {r['change']}" for tk, r in moved.iterrows()))
     L += ["", "## Catalysts in the next 30 days"]
     for _, r in catalysts.iterrows():
         L.append(f"- {r.date}: {r.event}")

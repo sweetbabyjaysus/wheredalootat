@@ -1,0 +1,21 @@
+# Evidence screen: which names have the strongest case on paper. NOT a forecast or a
+# recommendation. Each check is metric / op / threshold; a missing metric counts as "n/a"
+# (neither pass nor fail) unless missing_counts_as is set. Metric names are the ones in the
+# Companies and Sentiment matrix tabs (README lists them).
+checks:
+  - {id: fundamentals, label: "Fundamentals score > 0", metric: fundamentals_score, op: ">", threshold: 0}
+  - {id: revisions, label: "EPS estimates up over 90 days", metric: eps_revision_90d, op: ">", threshold: 0}
+  - {id: target, label: "Analyst target >= 15% above price", metric: target_upside, op: ">=", threshold: 0.15}
+  - {id: valuation, label: "EV/sales no more than 25% above its 3-year average", metric: ev_sales_vs_3y_avg, op: "<", threshold: 0.25, missing_counts_as: pass,
+     note: "short-history names have no 3-year average; treated as pass so they aren't excluded for missing data"}
+  - {id: balance_sheet, label: "Net debt/EBITDA < 2x", metric: net_debt_to_ebitda, op: "<", threshold: 2}
+  - {id: rating, label: "Average analyst rating buy or better (<= 2.0)", metric: analyst_rating_mean, op: "<=", threshold: 2.0}
+
+# Warnings shown next to the result; they don't change the pass count.
+flags:
+  - {label: "Very low forward P/E: market may be pricing a cyclical peak", metric: forward_pe, op: "<", threshold: 6, also_require: {metric: forward_pe, op: ">", threshold: 0}}
+  - {label: "Falling hard: down more than 15% in a month", metric: ret_1m, op: "<", threshold: -0.15}
+  - {label: "Target upside above 100%: analyst targets look stale or extreme", metric: target_upside, op: ">", threshold: 1.0}
+  - {label: "Negative free cash flow (TTM)", metric: fcf_margin_ttm, op: "<", threshold: 0}
+
+top_n: 6   # names listed in summary.md
