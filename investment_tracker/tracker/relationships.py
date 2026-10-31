@@ -52,7 +52,9 @@ def analyse(ds, settings, ledger):
             ledger.gap(f"{sup}/{cus}", "relationship", "both tickers must be in universe.csv with prices")
             continue
         r = pd.concat([ps.pct_change(), pc.pct_change()], axis=1, keys=["s", "c"]).dropna()
-        row = {"supplier": sup, "customer": cus, "links": " | ".join(g.relationship),
+        row = {"supplier": sup, "customer": cus, "type": " / ".join(dict.fromkeys(g.get("type", pd.Series(["supplier"])))),
+               "evidence_quality": " / ".join(dict.fromkeys(g.get("evidence_quality", pd.Series([""])))),
+               "links": " | ".join(g.relationship),
                "sources": " ; ".join(g.source_url)}
         for label, days in (("90d", 90), ("1y", 252)):
             w = r.iloc[-days:]

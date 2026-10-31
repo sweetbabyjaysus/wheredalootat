@@ -18,8 +18,8 @@ from .config import ROOT
 
 # Reference palette (validated categorical order) and text tokens
 SERIES = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4", "#008300", "#6250d6", "#e34948"]
-BUCKET_COLOR = dict(zip(analysis.BUCKET_ORDER, SERIES))
-BUCKET_MARKER = {"Bottleneck": "o", "Compute leader": "s", "Hyperscaler": "D", "Leveraged buildout": "^"}
+BUCKET_COLOR = dict(zip(analysis.BUCKET_ORDER, SERIES[:4] + [SERIES[5]]))  # slot 5 (magenta) is kept for macro lines
+BUCKET_MARKER = {"Bottleneck": "o", "Compute leader": "s", "Hyperscaler": "D", "Leveraged buildout": "^", "Adjacent": "P"}
 MACRO_COLOR = [SERIES[6], SERIES[4]]   # violet, magenta: never used for groups
 INK, INK2, GRID, SURFACE = "#0b0b0b", "#52514e", "#e4e3df", "#fcfcfb"
 NEG_FILL, POS_FILL, MID_FILL = "F4B6B5", "B9DFC6", "FFFFFF"
@@ -267,7 +267,7 @@ def summary_md(path, asof, sc_results, scores, catalysts: pd.DataFrame, claims: 
     if rel_sum is not None and len(rel_sum):
         L += ["", "## Supplier-customer links"]
         for _, r in rel_sum.iterrows():
-            line = (f"- **{r.supplier} -> {r.customer}**: 1y correlation {r.corr_1y:.2f}, beta {r.beta_1y:.2f}")
+            line = (f"- **{r.supplier} -> {r.customer}** ({r.get('type', 'supplier')}): 1y correlation {r.corr_1y:.2f}, beta {r.beta_1y:.2f}")
             if pd.notna(r.get("last_event")):
                 line += (f"; around {r.customer}'s {r.last_event} results {r.customer} moved {r.last_customer_move:+.1%}, "
                          f"{r.supplier} {r.last_supplier_move:+.1%} (same direction in "

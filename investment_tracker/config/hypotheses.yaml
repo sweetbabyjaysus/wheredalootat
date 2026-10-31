@@ -28,6 +28,7 @@ groups:                  # buckets from universe.csv; aliases used below
   compute: Compute leader
   hyperscaler: Hyperscaler
   leveraged: Leveraged buildout
+  adjacent: Adjacent
 
 hypotheses:
 

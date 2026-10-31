@@ -17,3 +17,5 @@ Leveraged buildout,Debt-funded builder,Oracle,ORCL,,NYSE,USD,sec,May,Debt-funded
 Leveraged buildout,Neocloud,Nebius,NBIS,,NASDAQ,USD,sec,Dec,GPU cloud (ex-Yandex NV); newsletter says -20% in the sell-off
 Leveraged buildout,Neocloud,IREN,IREN,,NASDAQ,USD,sec,Jun,Ex-bitcoin miner pivoting to AI cloud; newsletter says -25% in the sell-off
 Leveraged buildout,Debt-funded builder,SoftBank Group,9984.T,SFTBY,TSE,JPY,yfinance_quarterly,Mar,Levered AI holdco (OpenAI/Stargate); yen-carry indicator for H2; newsletter says -9%
+Adjacent,Physical AI & autos,Tesla,TSLA,,NASDAQ,USD,sec,Dec,Robotaxi/FSD and Optimus (competes with Alphabet's Waymo); supplies Megapacks to SpaceX; holds a $2.0bn SpaceX stake; $30bn new credit facilities (8-K 2026-09-29)
+Adjacent,Space & AI compute,SpaceX,SPCX,,NASDAQ,USD,sec,Dec,"Merged with xAI (Grok, X) and Cursor; sells AI compute (one unnamed customer = 34.5% of Q3 revenue); ~$40bn GPU finance lease with an Apollo entity (8-K 2026-10-26); IPO 2026-06-12 so history is short"

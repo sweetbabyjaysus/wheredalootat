@@ -15,4 +15,5 @@ topics:
   frontier_labs:    {weight: 2, informs: [H1, GOOGL, AVGO], terms: [Anthropic, OpenAI, Stargate, "frontier lab", "frontier labs"]}
   search_disruption: {weight: 2, informs: [GOOGL], terms: [search, "AI Overviews", "AI Mode", advertising, aggregator, aggregators]}
   rates_japan:      {weight: 2, informs: [H2], terms: [interest rates, Federal Reserve, yen, Japan, JGB, carry trade, inflation, SoftBank]}
+  adjacent_physical_ai: {weight: 2, informs: [TSLA, SPCX, GOOGL], terms: [SpaceX, SpaceXAI, xAI, Grok, Starlink, Starship, Waymo, Robotaxi, robotaxis, Optimus, FSD, Cursor, autonomous]}
   bubble:           {weight: 2, informs: [H1, H2], terms: [bubble, bubbles, dilution, "Who Is Paying", overbuild, overbuilding]}
