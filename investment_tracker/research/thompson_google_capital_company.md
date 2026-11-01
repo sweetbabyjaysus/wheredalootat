@@ -2,7 +2,7 @@
 
 Source: https://stratechery.com/2026/the-google-capital-company/ (free essay, read in full on 2026-10-30).
 Figures below come from Alphabet's 8-K results releases (Q1, Q2, Q3 2026) and the tracker's price data.
-Lines marked **Inference** are interpretation, not data. Research only, not trading advice.
+Lines marked **Inference** are interpretation, not data.
 
 ## The argument in brief
 

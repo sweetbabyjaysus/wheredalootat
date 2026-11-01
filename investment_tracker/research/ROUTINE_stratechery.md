@@ -1,6 +1,6 @@
 # Daily Stratechery check: runbook
 
-Run by a scheduled routine once a day, and also runnable by hand. Research only, not trading advice.
+Run by a scheduled routine once a day, and also runnable by hand.
 
 1. Work in the repo `sweetbabyjaysus/wheredalootat` on branch `claude/awesome-goodall-qub0rn`.
    `cd investment_tracker && python3 -m pip install -q -r requirements.txt`, and run every script with `python3`

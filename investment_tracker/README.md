@@ -1,6 +1,6 @@
 # Investment hypothesis tracker
 
-Research tool, not trading advice. It shows the evidence and doesn't recommend trades.
+Research tool for testing investment hypotheses against market, filing and macro data.
 
 Hypotheses, companies and thresholds live in `config/`. The code only fetches data and evaluates
 the test types listed at the top of `config/hypotheses.yaml`, so new ideas don't need code changes.

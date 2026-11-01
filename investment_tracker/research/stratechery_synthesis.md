@@ -3,7 +3,7 @@
 **Scope.** I indexed all 2,974 posts on stratechery.com through its public API (`data/stratechery_index.csv`;
 the ranked list is in `stratechery_digest.md`). I read 16 free articles and interviews in full, from Nov 2025 to Oct 2026, plus
 "The Google Capital Company" (see `thompson_google_capital_company.md`). Paid Updates are judged on title and teaser
-only. Quotes are short and taken from the text. Lines marked **Inference** are interpretation. Research only, not trading advice.
+only. Quotes are short and taken from the text. Lines marked **Inference** are interpretation.
 
 ## The one-paragraph version
 

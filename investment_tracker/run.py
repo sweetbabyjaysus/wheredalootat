@@ -112,7 +112,7 @@ def main():
         ("Summary", summary_tab, "Summary", "all sources below", asof),
         ("Hypothesis scorecard", report.scorecard_frame(results), "Hypothesis scorecard",
          "config/hypotheses.yaml tests evaluated on this run's data", asof),
-        ("Screen", scr, "Evidence screen (config/screen.yaml): strongest case on paper. NOT a forecast or recommendation",
+        ("Screen", scr, "Evidence screen (config/screen.yaml): strongest case on paper",
          "Companies + Sentiment matrix tabs; change = vs previous snapshot", asof, True),
         ("Group comparison", gc, "Group medians by bucket (n_ = members with data)", yf_src, asof, True),
         ("Group returns USD-THB", gr, "Group index returns in USD and THB", "yfinance closes; Yahoo THB=X", asof),

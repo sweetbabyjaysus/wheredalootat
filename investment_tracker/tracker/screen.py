@@ -1,5 +1,4 @@
-"""Evidence screen from config/screen.yaml. Shows where the case looks strongest on paper;
-it is not a forecast or a recommendation."""
+"""Evidence screen from config/screen.yaml: where the case looks strongest on paper."""
 from __future__ import annotations
 
 import operator

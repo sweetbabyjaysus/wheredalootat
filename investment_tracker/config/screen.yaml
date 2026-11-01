@@ -1,5 +1,4 @@
-# Evidence screen: which names have the strongest case on paper. NOT a forecast or a
-# recommendation. Each check is metric / op / threshold; a missing metric counts as "n/a"
+# Evidence screen: which names have the strongest case on paper. Each check is metric / op / threshold; a missing metric counts as "n/a"
 # (neither pass nor fail) unless missing_counts_as is set. Metric names are the ones in the
 # Companies and Sentiment matrix tabs (README lists them).
 checks:

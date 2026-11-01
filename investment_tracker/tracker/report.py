@@ -149,7 +149,7 @@ def _write_tab(writer, name, df, title, source, asof, index=False):
     df.to_excel(writer, sheet_name=name, startrow=3, index=index)
     ws = writer.sheets[name]
     ws["A1"] = title; ws["A1"].font = Font(bold=True, size=13)
-    ws["A2"] = f"Source: {source}"; ws["A3"] = f"As of: {asof}. Research only, not trading advice."
+    ws["A2"] = f"Source: {source}"; ws["A3"] = f"As of: {asof}."
     for c in ("A2", "A3"):
         ws[c].font = Font(italic=True, color="52514E", size=9)
     ws.freeze_panes = ws.cell(row=5, column=2 if index or len(df.columns) > 3 else 1)
@@ -241,7 +241,7 @@ def snapshot(path, asof, sc_results, ct, scores, macro_changes, scr=None):
 def summary_md(path, asof, sc_results, scores, catalysts: pd.DataFrame, claims: pd.DataFrame, sent_trend,
                rel_sum: pd.DataFrame | None = None, scr: pd.DataFrame | None = None):
     L = [f"# Hypothesis tracker - {asof}", "",
-         "_Research, not trading advice. Items marked **Inference** are interpretation, not data._", ""]
+         "_Items marked **Inference** are interpretation, not data._", ""]
     L.append("## Verdicts")
     for h in sc_results:
         ch = ("first run, no earlier snapshot" if not h["prev_verdict"] else
@@ -276,7 +276,7 @@ def summary_md(path, asof, sc_results, scores, catalysts: pd.DataFrame, claims: 
             L.append(line)
     if scr is not None and len(scr):
         n = int(scr["of"].iloc[0])
-        L += ["", f"## Evidence screen (top names; not a forecast or recommendation)", ""]
+        L += ["", "## Evidence screen (top names)", ""]
         for tk, r in scr.head(6).iterrows():
             ch = f", {r['change']} vs last run" if r["change"] not in ("", "=") else ""
             fl = f" - flags: {r['flags']}" if r["flags"] else ""
