@@ -1,10 +1,10 @@
-# Stratechery scan - 2026-11-03
+# Stratechery scan - 2026-11-04
 
-2978 posts indexed from stratechery.com. Scores weight matches on our companies and themes (`config/stratechery_watch.yaml`); titles count most. Paid Updates are scored on title + teaser only.
+2979 posts indexed from stratechery.com. Scores weight matches on our companies and themes (`config/stratechery_watch.yaml`); titles count most. Paid Updates are scored on title + teaser only.
 
 ## New since the last scan
 
-- none above score 15
+- 2026-11-04 **[AI on the Ballot](https://stratechery.com/2026/ai-on-the-ballot/)** - score 51.9, free, full text; relates to NVDA;SPCX, AVGO;GOOGL;H1;NVDA;SPCX;TSLA
 
 ## Free articles and interviews, last 12 months (top 25)
 
@@ -21,8 +21,8 @@
 - 2026-04-13 **[Mythos, Muse, and the Opportunity Cost of Compute](https://stratechery.com/2026/mythos-muse-and-the-opportunity-cost-of-compute/)** - score 54.9, free, full text; relates to GOOGL;TSM, AVGO;GOOGL;H1;TSM
 - 2025-12-18 **[The 2025 Stratechery Year in Review](https://stratechery.com/2025/the-2025-stratechery-year-in-review/)** - score 53.8, free, full text; relates to GOOGL;NVDA;SPCX;TSM, AVGO;GOOGL;H1;H2;NVDA;SPCX;TSLA;TSM
 - 2025-11-21 **[2025.47: Gemini! At The Disco](https://stratechery.com/2025/gemini-at-the-disco/)** - score 53.6, free, full text; relates to GOOGL;NVDA;TSLA;TSM, AVGO;GOOGL;H1;H2;NVDA;SPCX;TSLA;TSM
-- 2025-11-04 **[Amazon Earnings, AWS and OpenAI, Did Amazon Solve Groceries?](https://stratechery.com/2025/amazon-earnings-aws-and-openai-did-amazon-solve-groceries/)** - score 52.5, free, full text; relates to GOOGL;NVDA;ORCL;TSM, AVGO;GOOGL;H1;H2;NVDA;ORCL;TSM
 - 2025-11-05 **[The Benefits of Bubbles](https://stratechery.com/2025/the-benefits-of-bubbles/)** - score 52.3, free, full text; relates to GOOGL;NVDA;TSM, AVGO;GOOGL;H1;H2;NVDA;TSM
+- 2026-11-04 **[AI on the Ballot](https://stratechery.com/2026/ai-on-the-ballot/)** - score 51.9, free, full text; relates to NVDA;SPCX, AVGO;GOOGL;H1;NVDA;SPCX;TSLA
 - 2026-03-17 **[An Interview with Nvidia CEO Jensen Huang About Accelerated Computing](https://stratechery.com/2026/an-interview-with-nvidia-ceo-jensen-huang-about-accelerated-computing/)** - score 49.9, free, full text; relates to NVDA;TSLA, AVGO;GOOGL;H1;NVDA;SPCX;TSLA
 - 2026-02-03 **[Microsoft and Software Survival](https://stratechery.com/2026/microsoft-and-software-survival/)** - score 48, free, full text; relates to GOOGL;NVDA;ORCL;TSM, AVGO;GOOGL;H1;H2;NVDA;ORCL;SPCX;TSLA;TSM
 - 2026-06-04 **[An Interview with Microsoft CEO Satya Nadella About Finding Core Competencies](https://stratechery.com/2026/an-interview-with-microsoft-ceo-satya-nadella-about-finding-core-competencies/)** - score 45.2, free, full text; relates to GOOGL;NVDA, AVGO;GOOGL;H1;NVDA;SPCX;TSLA
