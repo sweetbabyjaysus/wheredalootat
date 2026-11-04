@@ -58,7 +58,10 @@ def _valuation_listing(row, info: dict, ledger: Ledger):
     """Listing whose trading currency equals the reporting currency (avoids ADR ratio issues)."""
     fin_ccy = info.get("financialCurrency")
     for tk in [row.ticker] + [t for t in row.alt_tickers.split(";") if t]:
-        raw = cached(f"info:{tk}", lambda: __import__("yfinance").Ticker(tk).info) or {}
+        try:
+            raw = cached(f"info:{tk}", yahoo._info_or_raise, tk) or {}
+        except Exception:
+            raw = {}
         if fin_ccy and raw.get("currency") == fin_ccy:
             return tk, fin_ccy
     ledger.gap(row.ticker, "valuation_history", f"no listing trades in reporting currency {fin_ccy}")
@@ -144,7 +147,10 @@ def build(universe: pd.DataFrame, hyp: dict, settings: dict, log=print) -> Datas
                     note = "computed; capped at 99x because TTM EBITDA <= 0 with positive net debt"
                 L.add(tk, k, snap[k], "computed from merged quarterly fundamentals", s.index[-1].date(), note=note)
 
-            raw_info = cached(f"info:{tk}", lambda: None) or {}
+            try:
+                raw_info = cached(f"info:{tk}", yahoo._info_or_raise, tk) or {}
+            except Exception:
+                raw_info = {}
             vtk, _ = _valuation_listing(row, raw_info, L)
             if vtk:
                 vpx = ds.prices.get(vtk)

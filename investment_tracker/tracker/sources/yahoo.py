@@ -34,8 +34,21 @@ def history(ticker: str, years: int, ledger: Ledger) -> pd.DataFrame:
     return df[["Close", "Volume"]]
 
 
+def _info_or_raise(ticker):
+    """Yahoo sometimes answers a rate-limited request with an empty dict (401 'Invalid Crumb').
+    Raise so the cache retries with backoff instead of storing the empty reply for the day."""
+    raw = yf.Ticker(ticker).info or {}
+    if not raw.get("currency") and not raw.get("regularMarketPrice"):
+        raise RuntimeError(f"rate limited: empty Yahoo info for {ticker}")
+    return raw
+
+
 def info(ticker: str, ledger: Ledger) -> dict:
-    raw = cached(f"info:{ticker}", lambda: yf.Ticker(ticker).info) or {}
+    try:
+        raw = cached(f"info:{ticker}", _info_or_raise, ticker) or {}
+    except Exception as e:
+        ledger.gap(ticker, "info", f"Yahoo info unavailable after retries ({str(e)[:60]})")
+        raw = {}
     today = dt.date.today()
     out = {}
     for k, (f, unit) in INFO_FIELDS.items():
