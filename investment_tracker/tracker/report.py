@@ -18,8 +18,8 @@ from .config import ROOT
 
 # Reference palette (validated categorical order) and text tokens
 SERIES = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4", "#008300", "#6250d6", "#e34948"]
-BUCKET_COLOR = dict(zip(analysis.BUCKET_ORDER, SERIES[:4] + [SERIES[5]]))  # slot 5 (magenta) is kept for macro lines
-BUCKET_MARKER = {"Bottleneck": "o", "Compute leader": "s", "Hyperscaler": "D", "Leveraged buildout": "^", "Adjacent": "P"}
+BUCKET_COLOR = dict(zip(analysis.BUCKET_ORDER, SERIES[:4] + [SERIES[5], SERIES[7]]))  # slot 5 (magenta) is kept for macro lines
+BUCKET_MARKER = {"Bottleneck": "o", "Compute leader": "s", "Hyperscaler": "D", "Leveraged buildout": "^", "Adjacent": "P", "Nuclear": "X"}
 MACRO_COLOR = [SERIES[6], SERIES[4]]   # violet, magenta: never used for groups
 INK, INK2, GRID, SURFACE = "#0b0b0b", "#52514e", "#e4e3df", "#fcfcfb"
 NEG_FILL, POS_FILL, MID_FILL = "F4B6B5", "B9DFC6", "FFFFFF"

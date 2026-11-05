@@ -6,7 +6,7 @@ import math
 import numpy as np
 import pandas as pd
 
-BUCKET_ORDER = ["Bottleneck", "Compute leader", "Hyperscaler", "Leveraged buildout", "Adjacent"]
+BUCKET_ORDER = ["Bottleneck", "Compute leader", "Hyperscaler", "Leveraged buildout", "Adjacent", "Nuclear"]
 
 COMPARE_METRICS = [
     "ret_1m", "ret_3m", "ret_ytd", "ret_1y", "pct_from_52w_high", "pct_vs_200dma",

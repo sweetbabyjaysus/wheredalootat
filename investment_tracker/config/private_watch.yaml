@@ -1,0 +1,27 @@
+# Daily watcher for private companies. Each source is checked for every company; new items
+# (not seen before) go into research/private_watch/YYYY-MM-DD.md. Add a company by adding a block.
+companies:
+  - id: anduril
+    name: Anduril
+    search_names: ["Anduril Industries", "Anduril"]
+    greenhouse_board: andurilindustries
+  - id: general_atomics
+    name: General Atomics
+    search_names: ["General Atomics Aeronautical Systems", "General Atomics Electromagnetic Systems", "General Atomics"]
+    greenhouse_board: null
+  - id: valar
+    name: Valar Atomics
+    search_names: ["Valar Atomics"]
+    greenhouse_board: null
+  - id: radiant
+    name: Radiant Industries
+    search_names: ["Radiant Industries", "Radiant Nuclear"]
+    greenhouse_board: null
+
+sources:
+  usaspending: {enabled: true, lookback_days: 30}     # federal contract awards
+  dod_contracts: {enabled: true}                      # defense.gov daily contract announcements (>= $7.5m)
+  sec_form_d: {enabled: true, lookback_days: 30}      # fundraising (Form D) via EDGAR full-text search
+  courtlistener: {enabled: true, lookback_days: 30}   # federal court dockets
+  lobbying: {enabled: true}                           # Senate LDA filings (quarterly)
+  jobs: {enabled: true}                               # Greenhouse job board counts by location

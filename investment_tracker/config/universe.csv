@@ -19,3 +19,10 @@ Leveraged buildout,Neocloud,IREN,IREN,,NASDAQ,USD,sec,Jun,Ex-bitcoin miner pivot
 Leveraged buildout,Debt-funded builder,SoftBank Group,9984.T,SFTBY,TSE,JPY,yfinance_quarterly,Mar,Levered AI holdco (OpenAI/Stargate); yen-carry indicator for H2; newsletter says -9%
 Adjacent,Physical AI & autos,Tesla,TSLA,,NASDAQ,USD,sec,Dec,Robotaxi/FSD and Optimus (competes with Alphabet's Waymo); supplies Megapacks to SpaceX; holds a $2.0bn SpaceX stake; $30bn new credit facilities (8-K 2026-09-29)
 Adjacent,Space & AI compute,SpaceX,SPCX,,NASDAQ,USD,sec,Dec,"Merged with xAI (Grok, X) and Cursor; sells AI compute (one unnamed customer = 34.5% of Q3 revenue); ~$40bn GPU finance lease with an Apollo entity (8-K 2026-10-26); IPO 2026-06-12 so history is short"
+Nuclear,Military reactors & fuel,BWX Technologies,BWXT,,NYSE,USD,sec,Dec,Project Pele builder; Army Janus vendor at Fort Campbell (BANR 20 MWe); TRISO fuel; Q3 2026 revenue $953m (+10%)
+Nuclear,Uranium & Westinghouse,Cameco,CCJ,CCO.TO,NYSE,USD,yfinance_quarterly,Dec,"Uranium miner; co-owns Westinghouse (eVinci microreactor: Janus at Fort Drum, Air Force ANPI)"
+Nuclear,Fuel (HALEU),Centrus Energy,LEU,,NYSE American,USD,sec,Dec,Only US HALEU enricher; $900m DOE task order; expansion ~2029; offtake with Radiant and Antares
+Nuclear,Fuel (TRISO),Standard Nuclear,STDN,,NYSE,USD,sec,Dec,TRISO fuel maker; IPO 2026-07-16 so history is short
+Nuclear,SMR & fuel,X-energy,XE,,NASDAQ,USD,sec,Dec,Xe-100 80 MWe; TRISO-X got first NRC HALEU fuel licence (Feb 2026); Amazon deal; IPO 2026-04-24 so history is short
+Nuclear,Microreactor developer,Oklo,OKLO,,NYSE,USD,sec,Dec,"Aurora 15-75 MWe; Groves isotope reactor critical 2026-08-05; Meta, Equinix, Switch (non-binding); Eielson AFB; Sam Altman chaired until 2025"
+Nuclear,SMR developer,NuScale Power,SMR,,NYSE,USD,sec,Dec,77 MWe modules with NRC design approval; ENTRA1/TVA 6 GW pending

@@ -45,7 +45,8 @@ def fundamentals_table(q: pd.DataFrame) -> pd.DataFrame:
     re_ = lambda s: s.reindex(idx)
     out = pd.DataFrame(index=idx)
     out["revenue"] = rev
-    out["revenue_yoy"] = rev / re_(lag(rev, 4)) - 1
+    prior_rev = re_(lag(rev, 4))
+    out["revenue_yoy"] = (rev / prior_rev - 1).where(prior_rev > 0)   # growth from zero is undefined
     out["gross_margin"] = gp / rev
     out["operating_margin"] = g("operating_income") / rev
     out["net_income"] = g("net_income")

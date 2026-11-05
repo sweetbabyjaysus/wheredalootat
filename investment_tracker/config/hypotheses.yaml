@@ -29,6 +29,7 @@ groups:                  # buckets from universe.csv; aliases used below
   hyperscaler: Hyperscaler
   leveraged: Leveraged buildout
   adjacent: Adjacent
+  nuclear: Nuclear
 
 hypotheses:
 
