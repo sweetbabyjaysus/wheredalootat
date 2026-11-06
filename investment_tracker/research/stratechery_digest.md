@@ -1,10 +1,11 @@
-# Stratechery scan - 2026-11-05
+# Stratechery scan - 2026-11-06
 
-2980 posts indexed from stratechery.com. Scores weight matches on our companies and themes (`config/stratechery_watch.yaml`); titles count most. Paid Updates are scored on title + teaser only.
+2982 posts indexed from stratechery.com. Scores weight matches on our companies and themes (`config/stratechery_watch.yaml`); titles count most. Paid Updates are scored on title + teaser only.
 
 ## New since the last scan
 
-- 2026-11-05 **[An Interview With Intuit CEO Sasan Goodarzi About Accounting and AI](https://stratechery.com/2026/an-interview-with-intuit-ceo-sasan-goodarzi-about-accounting-and-ai/)** - score 29.4, free, full text; relates to GOOGL;ORCL, AVGO;GOOGL;H1;ORCL
+- 2026-11-06 **[2026.45: Falling Leaves (and Stocks)](https://stratechery.com/2026/falling-leaves-and-stocks/)** - score 29, free, full text; relates to GOOGL;NVDA, GOOGL;H1;NVDA
+- 2026-11-06 **[Sharp Tech on Video: The U.S. Votes on Data Centers, Implications for Big Tech, Google’s Response to AI](https://stratechery.com/2026/sharp-tech-on-video-the-u-s-votes-on-data-centers-implications-for-big-tech-googles-response-to-ai/)** - score 18, paid Update, teaser only; relates to GOOGL, GOOGL;H1
 
 ## Free articles and interviews, last 12 months (top 25)
 
@@ -31,8 +32,8 @@
 - 2026-04-28 **[An Interview with OpenAI CEO Sam Altman and AWS CEO Matt Garman About Bedrock Managed Agents](https://stratechery.com/2026/an-interview-with-openai-ceo-sam-altman-and-aws-ceo-matt-garman-about-bedrock-managed-agents/)** - score 41.5, free, full text; relates to GOOGL, AVGO;GOOGL;H1
 - 2025-11-18 **[Robotaxis and Suburbia](https://stratechery.com/2025/robotaxis-and-suburbia/)** - score 41.2, free, full text; relates to NVDA;TSLA, GOOGL;H1;NVDA;SPCX;TSLA
 - 2026-05-11 **[The Inference Shift](https://stratechery.com/2026/the-inference-shift/)** - score 40.6, free, full text; relates to NVDA;SPCX, AVGO;GOOGL;H1;H2;NVDA;SPCX;TSLA
-- 2026-03-31 **[Apple’s 50 Years of Integration](https://stratechery.com/2026/apples-50-years-of-integration/)** - score 39.5, free, full text; relates to GOOGL;NVDA, AVGO;GOOGL;H1;NVDA
 - 2026-10-29 **[An Interview with Palantir CTO Shyam Sankar About the AI Religious War](https://stratechery.com/2026/an-interview-with-palantir-cto-shyam-sankar-about-the-ai-religious-war/)** - score 39.5, free, full text; relates to GOOGL;NVDA, AVGO;BWXT;CCJ;GOOGL;H1;H2;LEU;NVDA;OKLO;SMR;SPCX;STDN;TSLA;XE;defense
+- 2026-03-31 **[Apple’s 50 Years of Integration](https://stratechery.com/2026/apples-50-years-of-integration/)** - score 39.5, free, full text; relates to GOOGL;NVDA, AVGO;GOOGL;H1;NVDA
 
 ## Paid Updates, last 12 months (top 25; scored on title + teaser)
 
@@ -55,12 +56,12 @@
 - 2025-12-15 **[Disney and OpenAI, Totems in an AI World, Google Versus the World](https://stratechery.com/2025/disney-and-openai-totems-in-an-ai-world-google-versus-the-world/)** - score 20.8, paid Update, teaser only; relates to GOOGL, AVGO;GOOGL;H1
 - 2026-03-04 **[Anthropic’s Skyrocketing Revenue, A Contract Compromise?, Nvidia Earnings](https://stratechery.com/2026/anthropics-skyrocketing-revenue-a-contract-compromise-nvidia-earnings/)** - score 20, paid Update, teaser only; relates to NVDA, AVGO;GOOGL;H1;NVDA
 - 2026-10-13 **[SpaceX Buys More Spectrum, Musk and Market Structure, Distributed Cellular](https://stratechery.com/2026/spacex-buys-more-spectrum-musk-and-market-structure-distributed-cellular/)** - score 20, paid Update, teaser only; relates to SPCX, GOOGL;SPCX;TSLA
+- 2026-11-06 **[Sharp Tech on Video: The U.S. Votes on Data Centers, Implications for Big Tech, Google’s Response to AI](https://stratechery.com/2026/sharp-tech-on-video-the-u-s-votes-on-data-centers-implications-for-big-tech-googles-response-to-ai/)** - score 18, paid Update, teaser only; relates to GOOGL, GOOGL;H1
 - 2026-09-01 **[Nvidia Earnings, Dollars Per Gigawatt, Open and Hugging Face](https://stratechery.com/2026/nvidia-earnings-dollars-per-gigawatt-open-and-hugging-face/)** - score 18, paid Update, teaser only; relates to NVDA, H1;NVDA
 - 2026-04-22 **[John Ternus and Apple’s Hardware-Defined Future, SpaceXAI and Cursor](https://stratechery.com/2026/john-ternus-and-apples-hardware-defined-future-spacexai-and-cursor/)** - score 17.8, paid Update, teaser only; relates to SPCX, GOOGL;SPCX;TSLA
 - 2026-11-02 **[Google Earnings, Facebook Déjà Vu, The Agent Play](https://stratechery.com/2026/google-earnings-facebook-deja-vu-the-agent-play/)** - score 17.5, paid Update, teaser only; relates to GOOGL, GOOGL;H1
 - 2026-08-05 **[Google Earnings, The Frontier Case, Amazon Earnings](https://stratechery.com/2026/google-earnings-the-frontier-case-amazon-earnings/)** - score 17, paid Update, teaser only; relates to GOOGL, AVGO;GOOGL;H1
 - 2026-05-04 **[Google Earnings, Meta Earnings](https://stratechery.com/2026/google-earnings-meta-earnings/)** - score 15.2, paid Update, teaser only; relates to GOOGL, AVGO;GOOGL;H1
-- 2026-01-13 **[Apple and Gemini, Foundation vs. Aggregation, Universal Commerce Protocol](https://stratechery.com/2026/apple-and-gemini-foundation-vs-aggregation-universal-commerce-protocol/)** - score 15, paid Update, teaser only; relates to GOOGL, GOOGL;H1
 
 ## Older background (top 15)
 
