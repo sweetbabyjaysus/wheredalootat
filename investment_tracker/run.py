@@ -130,6 +130,9 @@ def main():
          "relationship text: SEC 8-K filings (see sources column); prices: yfinance", asof),
         ("Relationship events", rel_events, "Supplier move around each customer earnings release (2-day window)",
          "customer SEC 8-K Item 2.02 dates; yfinance closes", asof),
+        ("News references", (pd.read_csv(ROOT / "data" / "news_references.csv").sort_values("date", ascending=False)
+                             if (ROOT / "data" / "news_references.csv").exists() else pd.DataFrame()),
+         "Newsletter items tagged by theme, ticker and hypothesis", "data/news_references.csv (International Intrigue etc.)", asof),
         ("Newsletter claims", cl, "Newsletter and premise figures checked against data", "config/claims_to_verify.csv", asof),
         ("Catalyst calendar", upcoming, "Upcoming catalysts", "federalreserve.gov; boj.or.jp; FRED (BLS CPI schedule); yfinance", asof),
         ("Headlines", heads, "News headlines scored (lexicon)", "Google News RSS; yfinance news", asof),
