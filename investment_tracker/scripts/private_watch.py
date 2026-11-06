@@ -182,7 +182,11 @@ def main():
             L.append(f"- **{n['source']}**, {n['date']}{amt}: {n['title']}{link}")
         L.append("")
     path = OUT / f"{TODAY}.md"
-    path.write_text("\n".join(L) + "\n")
+    if path.exists():   # a later run the same day: append rather than overwrite
+        L[0] = f"\n---\n\n## Later run {dt.datetime.now():%H:%M}"
+        path.write_text(path.read_text() + "\n".join(L) + "\n")
+    else:
+        path.write_text("\n".join(L) + "\n")
     print(f"{len(new)} new items; {len(failed)} sources unreachable -> {path}")
     for k, v in failed.items():
         print(f"  unreachable: {k}: {v}")
