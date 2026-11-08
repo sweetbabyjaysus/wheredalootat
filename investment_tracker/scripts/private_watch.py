@@ -100,7 +100,7 @@ def courtlistener(co, cfg):
 
 
 def lobbying(co, cfg):
-    j = _get("https://lda.senate.gov/api/v1/filings/",
+    j = _get("https://lda.gov/api/v1/filings/",
              params={"client_name": co["search_names"][0], "filing_year": TODAY.year}).json()
     for f in j.get("results", []):
         yield {"key": f"lda:{f.get('filing_uuid')}", "date": f.get("dt_posted", "")[:10],
@@ -141,7 +141,7 @@ SOURCES = {"usaspending": (usaspending, "api.usaspending.gov", "Federal contract
            "dod_contracts": (dod_contracts, "www.defense.gov", "DoD contract announcements"),
            "sec_form_d": (sec_form_d, "efts.sec.gov", "SEC Form D (fundraising)"),
            "courtlistener": (courtlistener, "www.courtlistener.com", "Court dockets"),
-           "lobbying": (lobbying, "lda.senate.gov", "Lobbying filings"),
+           "lobbying": (lobbying, "lda.gov", "Lobbying filings"),
            "jobs": (jobs, "boards-api.greenhouse.io", "Open roles")}
 
 
