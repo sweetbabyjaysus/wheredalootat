@@ -160,14 +160,18 @@ def main():
                         seen_keys.add(item["key"])
                         new.append({**item, "company": co["name"], "source": label})
             except Exception as e:
-                failed[label] = f"{host} ({type(e).__name__}: {str(e)[:80]})"
+                code = getattr(getattr(e, "response", None), "status_code", None)
+                kind = ("site error, usually temporary - retried next run" if code and code >= 500
+                        else "blocked: allow this host in the environment's network settings"
+                        if "ProxyError" in type(e).__name__ else "error")
+                failed[label] = f"{host} - {kind} ({type(e).__name__}: {str(e)[:70]})"
                 break
     if new:
         pd.concat([seen, pd.DataFrame([{"key": n["key"], "first_seen": TODAY.isoformat()} for n in new])]).to_csv(SEEN, index=False)
     OUT.mkdir(parents=True, exist_ok=True)
     L = [f"# Private company watch - {TODAY}", ""]
     if failed:
-        L += ["**Sources not reachable (allow these hosts in the environment's network settings):**", ""]
+        L += ["**Sources not checked this run:**", ""]
         L += [f"- {k}: {v}" for k, v in failed.items()] + [""]
     if not new:
         L.append("No new items from the reachable sources.")
