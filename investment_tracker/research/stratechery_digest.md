@@ -1,6 +1,6 @@
-# Stratechery scan - 2026-11-08
+# Stratechery scan - 2026-11-09
 
-2982 posts indexed from stratechery.com. Scores weight matches on our companies and themes (`config/stratechery_watch.yaml`); titles count most. Paid Updates are scored on title + teaser only.
+2983 posts indexed from stratechery.com. Scores weight matches on our companies and themes (`config/stratechery_watch.yaml`); titles count most. Paid Updates are scored on title + teaser only.
 
 ## New since the last scan
 
@@ -44,8 +44,8 @@
 - 2026-05-12 **[SpaceX and Anthropic, xAI’s Two Companies, Elon Musk and SpaceXAI’s Future](https://stratechery.com/2026/spacex-and-anthropic-xais-two-companies-elon-musk-and-spacexais-future/)** - score 37, paid Update, teaser only; relates to SPCX, AVGO;GOOGL;H1;SPCX;TSLA
 - 2026-03-11 **[Oracle Earnings, Oracle’s Cloud Growth, Oracle’s Software Defense](https://stratechery.com/2026/oracle-earnings-oracles-cloud-growth-oracles-software-defense/)** - score 31.2, paid Update, teaser only; relates to ORCL, ORCL
 - 2026-01-21 **[TSMC Earnings, The TSMC Brake Revisited, Why AI Needs Foundry Competition](https://stratechery.com/2026/tsmc-earnings-the-tsmc-brake-revisited-why-ai-needs-foundry-competition/)** - score 29, paid Update, teaser only; relates to TSM, H1;TSM
-- 2025-11-24 **[Nvidia Earnings; Power, Scarcity, and Marginal Costs; OpenAI Hand-wringing](https://stratechery.com/2025/nvidia-earnings-power-scarcity-and-marginal-costs-openai-hand-wringing/)** - score 28, paid Update, teaser only; relates to NVDA, AVGO;GOOGL;H1;H2;NVDA
 - 2026-10-22 **[An Interview with Craig Moffett About SpaceX and Bubbles](https://stratechery.com/2026/an-interview-with-craig-moffett-about-spacex-and-bubbles/)** - score 28, paid Update, teaser only; relates to SPCX, GOOGL;H1;H2;SPCX;TSLA
+- 2025-11-24 **[Nvidia Earnings; Power, Scarcity, and Marginal Costs; OpenAI Hand-wringing](https://stratechery.com/2025/nvidia-earnings-power-scarcity-and-marginal-costs-openai-hand-wringing/)** - score 28, paid Update, teaser only; relates to NVDA, AVGO;GOOGL;H1;H2;NVDA
 - 2026-05-26 **[Nvidia Earnings, The AI Stack, Nvidia’s New Reporting](https://stratechery.com/2026/nvidia-earnings-the-ai-stack-nvidias-new-reporting/)** - score 26.2, paid Update, teaser only; relates to NVDA, H1;NVDA
 - 2025-12-02 **[OpenAI Code Red, AWS and Google Cloud Networking](https://stratechery.com/2025/openai-code-red-aws-and-google-cloud-networking/)** - score 26, paid Update, teaser only; relates to GOOGL, AVGO;GOOGL;H1
 - 2025-11-25 **[Opus 4.5 and Anthropic’s Aligned Enterprise Strategy, ChatGPT Shopping Research, Meta to Use TPUs?](https://stratechery.com/2025/opus-4-5-and-anthropics-aligned-enterprise-strategy-chatgpt-shopping-research-meta-to-use-tpus/)** - score 23.8, paid Update, teaser only; relates to GOOGL, AVGO;GOOGL;H1
