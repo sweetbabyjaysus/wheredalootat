@@ -1,6 +1,6 @@
-# Stratechery scan - 2026-11-10
+# Stratechery scan - 2026-11-11
 
-2984 posts indexed from stratechery.com. Scores weight matches on our companies and themes (`config/stratechery_watch.yaml`); titles count most. Paid Updates are scored on title + teaser only.
+2985 posts indexed from stratechery.com. Scores weight matches on our companies and themes (`config/stratechery_watch.yaml`); titles count most. Paid Updates are scored on title + teaser only.
 
 ## New since the last scan
 
@@ -37,7 +37,6 @@
 ## Paid Updates, last 12 months (top 25; scored on title + teaser)
 
 - 2026-06-08 **[Google Buys Compute From SpaceX, Broadcom’s Outlook, Apple’s AI Politics](https://stratechery.com/2026/google-buys-compute-from-spacex-broadcoms-outlook-apples-ai-politics/)** - score 53, paid Update, teaser only; relates to AVGO;GOOGL;NVDA;SPCX, AVGO;GOOGL;H1;NVDA;SPCX;TSLA
-- 2025-11-11 **[SpaceX Buys More Spectrum, SpaceX’s Pivot, Why Apple and SpaceX Should Partner](https://stratechery.com/2025/spacex-buys-more-spectrum-spacexs-pivot-why-apple-and-spacex-should-partner/)** - score 50, paid Update, teaser only; relates to SPCX, GOOGL;SPCX;TSLA
 - 2026-02-09 **[Google Earnings, Google Cloud Crushes, Search Advertising and LLMs](https://stratechery.com/2026/google-earnings-google-cloud-crushes-search-advertising-and-llms/)** - score 45, paid Update, teaser only; relates to GOOGL, GOOGL;H1
 - 2026-08-18 **[Nvidia Backs OpenAI Data Center, Anthropic News, Google Buys Spirit Airlines Data](https://stratechery.com/2026/nvidia-backs-openai-data-center-anthropic-news-google-buys-spirit-airlines-data/)** - score 44.8, paid Update, teaser only; relates to GOOGL;NVDA, AVGO;GOOGL;H1;NVDA
 - 2026-04-07 **[Anthropic’s New TPU Deal, Anthropic’s Computing Crunch, The Anthropic-Google Alliance](https://stratechery.com/2026/anthropics-new-tpu-deal-anthropics-computing-crunch-the-anthropic-google-alliance/)** - score 44.2, paid Update, teaser only; relates to GOOGL, AVGO;GOOGL;H1
@@ -53,14 +52,15 @@
 - 2026-10-27 **[Anthropic S-1, The Cost of Compute, Who Is Paying?](https://stratechery.com/2026/anthropic-s-1-the-cost-of-compute-who-is-paying/)** - score 22, paid Update, teaser only; relates to AVGO;GOOGL;H1;H2
 - 2026-04-20 **[TSMC Earnings, New N3 Fabs, The Nvidia Ramp](https://stratechery.com/2026/tsmc-earnings-new-n3-fabs-the-nvidia-ramp/)** - score 21, paid Update, teaser only; relates to NVDA;TSM, NVDA;TSM
 - 2025-12-15 **[Disney and OpenAI, Totems in an AI World, Google Versus the World](https://stratechery.com/2025/disney-and-openai-totems-in-an-ai-world-google-versus-the-world/)** - score 20.8, paid Update, teaser only; relates to GOOGL, AVGO;GOOGL;H1
-- 2026-03-04 **[Anthropic’s Skyrocketing Revenue, A Contract Compromise?, Nvidia Earnings](https://stratechery.com/2026/anthropics-skyrocketing-revenue-a-contract-compromise-nvidia-earnings/)** - score 20, paid Update, teaser only; relates to NVDA, AVGO;GOOGL;H1;NVDA
 - 2026-10-13 **[SpaceX Buys More Spectrum, Musk and Market Structure, Distributed Cellular](https://stratechery.com/2026/spacex-buys-more-spectrum-musk-and-market-structure-distributed-cellular/)** - score 20, paid Update, teaser only; relates to SPCX, GOOGL;SPCX;TSLA
-- 2026-11-06 **[Sharp Tech on Video: The U.S. Votes on Data Centers, Implications for Big Tech, Google’s Response to AI](https://stratechery.com/2026/sharp-tech-on-video-the-u-s-votes-on-data-centers-implications-for-big-tech-googles-response-to-ai/)** - score 18, paid Update, teaser only; relates to GOOGL, GOOGL;H1
+- 2026-03-04 **[Anthropic’s Skyrocketing Revenue, A Contract Compromise?, Nvidia Earnings](https://stratechery.com/2026/anthropics-skyrocketing-revenue-a-contract-compromise-nvidia-earnings/)** - score 20, paid Update, teaser only; relates to NVDA, AVGO;GOOGL;H1;NVDA
 - 2026-09-01 **[Nvidia Earnings, Dollars Per Gigawatt, Open and Hugging Face](https://stratechery.com/2026/nvidia-earnings-dollars-per-gigawatt-open-and-hugging-face/)** - score 18, paid Update, teaser only; relates to NVDA, H1;NVDA
+- 2026-11-06 **[Sharp Tech on Video: The U.S. Votes on Data Centers, Implications for Big Tech, Google’s Response to AI](https://stratechery.com/2026/sharp-tech-on-video-the-u-s-votes-on-data-centers-implications-for-big-tech-googles-response-to-ai/)** - score 18, paid Update, teaser only; relates to GOOGL, GOOGL;H1
 - 2026-04-22 **[John Ternus and Apple’s Hardware-Defined Future, SpaceXAI and Cursor](https://stratechery.com/2026/john-ternus-and-apples-hardware-defined-future-spacexai-and-cursor/)** - score 17.8, paid Update, teaser only; relates to SPCX, GOOGL;SPCX;TSLA
 - 2026-11-02 **[Google Earnings, Facebook Déjà Vu, The Agent Play](https://stratechery.com/2026/google-earnings-facebook-deja-vu-the-agent-play/)** - score 17.5, paid Update, teaser only; relates to GOOGL, GOOGL;H1
 - 2026-08-05 **[Google Earnings, The Frontier Case, Amazon Earnings](https://stratechery.com/2026/google-earnings-the-frontier-case-amazon-earnings/)** - score 17, paid Update, teaser only; relates to GOOGL, AVGO;GOOGL;H1
 - 2026-05-04 **[Google Earnings, Meta Earnings](https://stratechery.com/2026/google-earnings-meta-earnings/)** - score 15.2, paid Update, teaser only; relates to GOOGL, AVGO;GOOGL;H1
+- 2025-11-19 **[Gemini 3, Winners and Losers, Integration and the Enterprise](https://stratechery.com/2025/gemini-3-winners-and-losers-integration-and-the-enterprise/)** - score 15, paid Update, teaser only; relates to GOOGL, GOOGL;H1
 
 ## Older background (top 15)
 
@@ -75,7 +75,7 @@
 - 2024-05-23 **[Interviews with Microsoft CEO Satya Nadella and CTO Kevin Scott About the AI Platform Shift](https://stratechery.com/2024/interviews-with-microsoft-ceo-satya-nadella-and-cto-kevin-scott-about-the-ai-platform-shift/)** - score 57.8, free, full text; relates to GOOGL;NVDA, AVGO;GOOGL;H1;H2;NVDA;SPCX;TSLA
 - 2025-04-17 **[An Interview with Dan Kim and Hassan Khan About CHIPS](https://stratechery.com/2025/an-interview-with-dan-kim-and-hassan-khan-about-chips/)** - score 57.2, free, full text; relates to 000660.KS;ASML;NVDA;TSM, 000660.KS;ASML;H1;H2;NVDA;TSM
 - 2020-09-15 **[Nvidia’s Integration Dreams](https://stratechery.com/2020/nvidias-integration-dreams/)** - score 56.3, free, full text; relates to NVDA;TSM, GOOGL;H1;H2;NVDA;SPCX;TSLA;TSM
-- 2024-02-26 **[Gemini and Google’s Culture](https://stratechery.com/2024/gemini-and-googles-culture/)** - score 56, free, full text; relates to GOOGL, AVGO;GOOGL;H1
 - 2024-05-29 **[AI Integration and Modularization](https://stratechery.com/2024/ai-integration-and-modularization/)** - score 56, free, full text; relates to GOOGL;NVDA, AVGO;GOOGL;H1;NVDA;SPCX;TSLA
+- 2024-02-26 **[Gemini and Google’s Culture](https://stratechery.com/2024/gemini-and-googles-culture/)** - score 56, free, full text; relates to GOOGL, AVGO;GOOGL;H1
 - 2025-11-05 **[The Benefits of Bubbles](https://stratechery.com/2025/the-benefits-of-bubbles/)** - score 55.7, free, full text; relates to GOOGL;NVDA;TSM, AVGO;BWXT;CCJ;GOOGL;H1;H2;LEU;NVDA;OKLO;SMR;STDN;TSM;XE
 - 2023-01-09 **[AI and the Big Five](https://stratechery.com/2023/ai-and-the-big-five/)** - score 55.6, free, full text; relates to GOOGL;NVDA;TSM, AVGO;GOOGL;H1;NVDA;TSM
