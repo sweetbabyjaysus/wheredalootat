@@ -1,4 +1,4 @@
-# Stratechery scan - 2026-11-13
+# Stratechery scan - 2026-11-14
 
 2988 posts indexed from stratechery.com. Scores weight matches on our companies and themes (`config/stratechery_watch.yaml`); titles count most. Paid Updates are scored on title + teaser only.
 
@@ -31,8 +31,8 @@
 - 2026-04-28 **[An Interview with OpenAI CEO Sam Altman and AWS CEO Matt Garman About Bedrock Managed Agents](https://stratechery.com/2026/an-interview-with-openai-ceo-sam-altman-and-aws-ceo-matt-garman-about-bedrock-managed-agents/)** - score 41.5, free, full text; relates to GOOGL, AVGO;GOOGL;H1
 - 2025-11-18 **[Robotaxis and Suburbia](https://stratechery.com/2025/robotaxis-and-suburbia/)** - score 41.2, free, full text; relates to NVDA;TSLA, GOOGL;H1;NVDA;SPCX;TSLA
 - 2026-05-11 **[The Inference Shift](https://stratechery.com/2026/the-inference-shift/)** - score 40.6, free, full text; relates to NVDA;SPCX, AVGO;GOOGL;H1;H2;NVDA;SPCX;TSLA
-- 2026-10-29 **[An Interview with Palantir CTO Shyam Sankar About the AI Religious War](https://stratechery.com/2026/an-interview-with-palantir-cto-shyam-sankar-about-the-ai-religious-war/)** - score 39.5, free, full text; relates to GOOGL;NVDA, AVGO;BWXT;CCJ;GOOGL;H1;H2;LEU;NVDA;OKLO;SMR;SPCX;STDN;TSLA;XE;defense
 - 2026-03-31 **[Apple’s 50 Years of Integration](https://stratechery.com/2026/apples-50-years-of-integration/)** - score 39.5, free, full text; relates to GOOGL;NVDA, AVGO;GOOGL;H1;NVDA
+- 2026-10-29 **[An Interview with Palantir CTO Shyam Sankar About the AI Religious War](https://stratechery.com/2026/an-interview-with-palantir-cto-shyam-sankar-about-the-ai-religious-war/)** - score 39.5, free, full text; relates to GOOGL;NVDA, AVGO;BWXT;CCJ;GOOGL;H1;H2;LEU;NVDA;OKLO;SMR;SPCX;STDN;TSLA;XE;defense
 
 ## Paid Updates, last 12 months (top 25; scored on title + teaser)
 
