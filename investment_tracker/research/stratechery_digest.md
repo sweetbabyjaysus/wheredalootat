@@ -1,4 +1,4 @@
-# Stratechery scan - 2026-11-14
+# Stratechery scan - 2026-11-15
 
 2988 posts indexed from stratechery.com. Scores weight matches on our companies and themes (`config/stratechery_watch.yaml`); titles count most. Paid Updates are scored on title + teaser only.
 
