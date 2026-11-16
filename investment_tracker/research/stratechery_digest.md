@@ -1,10 +1,10 @@
-# Stratechery scan - 2026-11-15
+# Stratechery scan - 2026-11-16
 
-2988 posts indexed from stratechery.com. Scores weight matches on our companies and themes (`config/stratechery_watch.yaml`); titles count most. Paid Updates are scored on title + teaser only.
+2989 posts indexed from stratechery.com. Scores weight matches on our companies and themes (`config/stratechery_watch.yaml`); titles count most. Paid Updates are scored on title + teaser only.
 
 ## New since the last scan
 
-- none above score 15
+- 2026-11-16 **[Obituaries](https://stratechery.com/2026/obituaries/)** - score 62, free, full text; relates to GOOGL;NVDA;TSM, AVGO;GOOGL;H1;H2;NVDA;TSM;defense
 
 ## Free articles and interviews, last 12 months (top 25)
 
@@ -17,6 +17,7 @@
 - 2026-03-26 **[An Interview with Arm CEO Rene Haas About Selling Chips](https://stratechery.com/2026/an-interview-with-arm-ceo-rene-haas-about-selling-chips/)** - score 70.6, free, full text; relates to AVGO;GOOGL;IFX.DE;NVDA;SNDK;TSM, AVGO;BWXT;CCJ;GOOGL;H1;H2;IFX.DE;LEU;NVDA;OKLO;SMR;SNDK;STDN;TSM;XE
 - 2026-05-05 **[Amazon’s Durability](https://stratechery.com/2026/amazons-durability/)** - score 67.2, free, full text; relates to AVGO;GOOGL;NVDA;ORCL;SPCX, AVGO;GOOGL;H1;NVDA;ORCL;SPCX;TSLA;defense
 - 2026-01-26 **[TSMC Risk](https://stratechery.com/2026/tsmc-risk/)** - score 64.6, free, full text; relates to GOOGL;NVDA;TSM, AVGO;BWXT;CCJ;GOOGL;H1;H2;LEU;NVDA;OKLO;SMR;STDN;TSM;XE
+- 2026-11-16 **[Obituaries](https://stratechery.com/2026/obituaries/)** - score 62, free, full text; relates to GOOGL;NVDA;TSM, AVGO;GOOGL;H1;H2;NVDA;TSM;defense
 - 2026-03-16 **[Agents Over Bubbles](https://stratechery.com/2026/agents-over-bubbles/)** - score 55.9, free, full text; relates to GOOGL;NVDA;ORCL, AVGO;GOOGL;H1;H2;NVDA;ORCL
 - 2025-12-18 **[The 2025 Stratechery Year in Review](https://stratechery.com/2025/the-2025-stratechery-year-in-review/)** - score 55.8, free, full text; relates to GOOGL;NVDA;SPCX;TSM, AVGO;GOOGL;H1;H2;NVDA;SPCX;TSLA;TSM;defense
 - 2026-04-13 **[Mythos, Muse, and the Opportunity Cost of Compute](https://stratechery.com/2026/mythos-muse-and-the-opportunity-cost-of-compute/)** - score 54.9, free, full text; relates to GOOGL;TSM, AVGO;GOOGL;H1;TSM
@@ -32,7 +33,6 @@
 - 2025-11-18 **[Robotaxis and Suburbia](https://stratechery.com/2025/robotaxis-and-suburbia/)** - score 41.2, free, full text; relates to NVDA;TSLA, GOOGL;H1;NVDA;SPCX;TSLA
 - 2026-05-11 **[The Inference Shift](https://stratechery.com/2026/the-inference-shift/)** - score 40.6, free, full text; relates to NVDA;SPCX, AVGO;GOOGL;H1;H2;NVDA;SPCX;TSLA
 - 2026-03-31 **[Apple’s 50 Years of Integration](https://stratechery.com/2026/apples-50-years-of-integration/)** - score 39.5, free, full text; relates to GOOGL;NVDA, AVGO;GOOGL;H1;NVDA
-- 2026-10-29 **[An Interview with Palantir CTO Shyam Sankar About the AI Religious War](https://stratechery.com/2026/an-interview-with-palantir-cto-shyam-sankar-about-the-ai-religious-war/)** - score 39.5, free, full text; relates to GOOGL;NVDA, AVGO;BWXT;CCJ;GOOGL;H1;H2;LEU;NVDA;OKLO;SMR;SPCX;STDN;TSLA;XE;defense
 
 ## Paid Updates, last 12 months (top 25; scored on title + teaser)
 
