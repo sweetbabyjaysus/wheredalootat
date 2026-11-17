@@ -1,10 +1,10 @@
-# Stratechery scan - 2026-11-16
+# Stratechery scan - 2026-11-17
 
-2989 posts indexed from stratechery.com. Scores weight matches on our companies and themes (`config/stratechery_watch.yaml`); titles count most. Paid Updates are scored on title + teaser only.
+2990 posts indexed from stratechery.com. Scores weight matches on our companies and themes (`config/stratechery_watch.yaml`); titles count most. Paid Updates are scored on title + teaser only.
 
 ## New since the last scan
 
-- 2026-11-16 **[Obituaries](https://stratechery.com/2026/obituaries/)** - score 62, free, full text; relates to GOOGL;NVDA;TSM, AVGO;GOOGL;H1;H2;NVDA;TSM;defense
+- none above score 15
 
 ## Free articles and interviews, last 12 months (top 25)
 
@@ -60,7 +60,7 @@
 - 2026-11-02 **[Google Earnings, Facebook Déjà Vu, The Agent Play](https://stratechery.com/2026/google-earnings-facebook-deja-vu-the-agent-play/)** - score 17.5, paid Update, teaser only; relates to GOOGL, GOOGL;H1
 - 2026-08-05 **[Google Earnings, The Frontier Case, Amazon Earnings](https://stratechery.com/2026/google-earnings-the-frontier-case-amazon-earnings/)** - score 17, paid Update, teaser only; relates to GOOGL, AVGO;GOOGL;H1
 - 2026-05-04 **[Google Earnings, Meta Earnings](https://stratechery.com/2026/google-earnings-meta-earnings/)** - score 15.2, paid Update, teaser only; relates to GOOGL, AVGO;GOOGL;H1
-- 2025-11-19 **[Gemini 3, Winners and Losers, Integration and the Enterprise](https://stratechery.com/2025/gemini-3-winners-and-losers-integration-and-the-enterprise/)** - score 15, paid Update, teaser only; relates to GOOGL, GOOGL;H1
+- 2026-01-13 **[Apple and Gemini, Foundation vs. Aggregation, Universal Commerce Protocol](https://stratechery.com/2026/apple-and-gemini-foundation-vs-aggregation-universal-commerce-protocol/)** - score 15, paid Update, teaser only; relates to GOOGL, GOOGL;H1
 
 ## Older background (top 15)
 
@@ -75,7 +75,7 @@
 - 2024-05-23 **[Interviews with Microsoft CEO Satya Nadella and CTO Kevin Scott About the AI Platform Shift](https://stratechery.com/2024/interviews-with-microsoft-ceo-satya-nadella-and-cto-kevin-scott-about-the-ai-platform-shift/)** - score 57.8, free, full text; relates to GOOGL;NVDA, AVGO;GOOGL;H1;H2;NVDA;SPCX;TSLA
 - 2025-04-17 **[An Interview with Dan Kim and Hassan Khan About CHIPS](https://stratechery.com/2025/an-interview-with-dan-kim-and-hassan-khan-about-chips/)** - score 57.2, free, full text; relates to 000660.KS;ASML;NVDA;TSM, 000660.KS;ASML;H1;H2;NVDA;TSM
 - 2020-09-15 **[Nvidia’s Integration Dreams](https://stratechery.com/2020/nvidias-integration-dreams/)** - score 56.3, free, full text; relates to NVDA;TSM, GOOGL;H1;H2;NVDA;SPCX;TSLA;TSM
-- 2024-05-29 **[AI Integration and Modularization](https://stratechery.com/2024/ai-integration-and-modularization/)** - score 56, free, full text; relates to GOOGL;NVDA, AVGO;GOOGL;H1;NVDA;SPCX;TSLA
 - 2024-02-26 **[Gemini and Google’s Culture](https://stratechery.com/2024/gemini-and-googles-culture/)** - score 56, free, full text; relates to GOOGL, AVGO;GOOGL;H1
+- 2024-05-29 **[AI Integration and Modularization](https://stratechery.com/2024/ai-integration-and-modularization/)** - score 56, free, full text; relates to GOOGL;NVDA, AVGO;GOOGL;H1;NVDA;SPCX;TSLA
 - 2025-11-05 **[The Benefits of Bubbles](https://stratechery.com/2025/the-benefits-of-bubbles/)** - score 55.7, free, full text; relates to GOOGL;NVDA;TSM, AVGO;BWXT;CCJ;GOOGL;H1;H2;LEU;NVDA;OKLO;SMR;STDN;TSM;XE
 - 2023-01-09 **[AI and the Big Five](https://stratechery.com/2023/ai-and-the-big-five/)** - score 55.6, free, full text; relates to GOOGL;NVDA;TSM, AVGO;GOOGL;H1;NVDA;TSM
