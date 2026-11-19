@@ -1,6 +1,6 @@
-# Stratechery scan - 2026-11-18
+# Stratechery scan - 2026-11-19
 
-2991 posts indexed from stratechery.com. Scores weight matches on our companies and themes (`config/stratechery_watch.yaml`); titles count most. Paid Updates are scored on title + teaser only.
+2992 posts indexed from stratechery.com. Scores weight matches on our companies and themes (`config/stratechery_watch.yaml`); titles count most. Paid Updates are scored on title + teaser only.
 
 ## New since the last scan
 
@@ -52,15 +52,15 @@
 - 2026-10-27 **[Anthropic S-1, The Cost of Compute, Who Is Paying?](https://stratechery.com/2026/anthropic-s-1-the-cost-of-compute-who-is-paying/)** - score 22, paid Update, teaser only; relates to AVGO;GOOGL;H1;H2
 - 2026-04-20 **[TSMC Earnings, New N3 Fabs, The Nvidia Ramp](https://stratechery.com/2026/tsmc-earnings-new-n3-fabs-the-nvidia-ramp/)** - score 21, paid Update, teaser only; relates to NVDA;TSM, NVDA;TSM
 - 2025-12-15 **[Disney and OpenAI, Totems in an AI World, Google Versus the World](https://stratechery.com/2025/disney-and-openai-totems-in-an-ai-world-google-versus-the-world/)** - score 20.8, paid Update, teaser only; relates to GOOGL, AVGO;GOOGL;H1
-- 2026-10-13 **[SpaceX Buys More Spectrum, Musk and Market Structure, Distributed Cellular](https://stratechery.com/2026/spacex-buys-more-spectrum-musk-and-market-structure-distributed-cellular/)** - score 20, paid Update, teaser only; relates to SPCX, GOOGL;SPCX;TSLA
 - 2026-03-04 **[Anthropic’s Skyrocketing Revenue, A Contract Compromise?, Nvidia Earnings](https://stratechery.com/2026/anthropics-skyrocketing-revenue-a-contract-compromise-nvidia-earnings/)** - score 20, paid Update, teaser only; relates to NVDA, AVGO;GOOGL;H1;NVDA
+- 2026-10-13 **[SpaceX Buys More Spectrum, Musk and Market Structure, Distributed Cellular](https://stratechery.com/2026/spacex-buys-more-spectrum-musk-and-market-structure-distributed-cellular/)** - score 20, paid Update, teaser only; relates to SPCX, GOOGL;SPCX;TSLA
 - 2026-09-01 **[Nvidia Earnings, Dollars Per Gigawatt, Open and Hugging Face](https://stratechery.com/2026/nvidia-earnings-dollars-per-gigawatt-open-and-hugging-face/)** - score 18, paid Update, teaser only; relates to NVDA, H1;NVDA
 - 2026-11-06 **[Sharp Tech on Video: The U.S. Votes on Data Centers, Implications for Big Tech, Google’s Response to AI](https://stratechery.com/2026/sharp-tech-on-video-the-u-s-votes-on-data-centers-implications-for-big-tech-googles-response-to-ai/)** - score 18, paid Update, teaser only; relates to GOOGL, GOOGL;H1
 - 2026-04-22 **[John Ternus and Apple’s Hardware-Defined Future, SpaceXAI and Cursor](https://stratechery.com/2026/john-ternus-and-apples-hardware-defined-future-spacexai-and-cursor/)** - score 17.8, paid Update, teaser only; relates to SPCX, GOOGL;SPCX;TSLA
 - 2026-11-02 **[Google Earnings, Facebook Déjà Vu, The Agent Play](https://stratechery.com/2026/google-earnings-facebook-deja-vu-the-agent-play/)** - score 17.5, paid Update, teaser only; relates to GOOGL, GOOGL;H1
 - 2026-08-05 **[Google Earnings, The Frontier Case, Amazon Earnings](https://stratechery.com/2026/google-earnings-the-frontier-case-amazon-earnings/)** - score 17, paid Update, teaser only; relates to GOOGL, AVGO;GOOGL;H1
 - 2026-05-04 **[Google Earnings, Meta Earnings](https://stratechery.com/2026/google-earnings-meta-earnings/)** - score 15.2, paid Update, teaser only; relates to GOOGL, AVGO;GOOGL;H1
-- 2026-01-13 **[Apple and Gemini, Foundation vs. Aggregation, Universal Commerce Protocol](https://stratechery.com/2026/apple-and-gemini-foundation-vs-aggregation-universal-commerce-protocol/)** - score 15, paid Update, teaser only; relates to GOOGL, GOOGL;H1
+- 2026-02-10 **[Amazon Earnings, CapEx Concerns, Commodity AI](https://stratechery.com/2026/amazon-earnings-capex-concerns-commodity-ai/)** - score 15, paid Update, teaser only; relates to GOOGL, GOOGL;H1
 
 ## Older background (top 15)
 
