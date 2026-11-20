@@ -1,10 +1,10 @@
-# Stratechery scan - 2026-11-19
+# Stratechery scan - 2026-11-20
 
-2992 posts indexed from stratechery.com. Scores weight matches on our companies and themes (`config/stratechery_watch.yaml`); titles count most. Paid Updates are scored on title + teaser only.
+2994 posts indexed from stratechery.com. Scores weight matches on our companies and themes (`config/stratechery_watch.yaml`); titles count most. Paid Updates are scored on title + teaser only.
 
 ## New since the last scan
 
-- none above score 15
+- 2026-11-20 **[2026.47: Down in DC](https://stratechery.com/2026/down-in-dc/)** - score 24.7, free, full text; relates to GOOGL;NVDA;TSM, AVGO;GOOGL;H1;H2;NVDA;TSM
 
 ## Free articles and interviews, last 12 months (top 25)
 
