@@ -1,10 +1,10 @@
-# Stratechery scan - 2026-11-20
+# Stratechery scan - 2026-11-21
 
 2994 posts indexed from stratechery.com. Scores weight matches on our companies and themes (`config/stratechery_watch.yaml`); titles count most. Paid Updates are scored on title + teaser only.
 
 ## New since the last scan
 
-- 2026-11-20 **[2026.47: Down in DC](https://stratechery.com/2026/down-in-dc/)** - score 24.7, free, full text; relates to GOOGL;NVDA;TSM, AVGO;GOOGL;H1;H2;NVDA;TSM
+- none above score 15
 
 ## Free articles and interviews, last 12 months (top 25)
 
@@ -21,7 +21,6 @@
 - 2026-03-16 **[Agents Over Bubbles](https://stratechery.com/2026/agents-over-bubbles/)** - score 55.9, free, full text; relates to GOOGL;NVDA;ORCL, AVGO;GOOGL;H1;H2;NVDA;ORCL
 - 2025-12-18 **[The 2025 Stratechery Year in Review](https://stratechery.com/2025/the-2025-stratechery-year-in-review/)** - score 55.8, free, full text; relates to GOOGL;NVDA;SPCX;TSM, AVGO;GOOGL;H1;H2;NVDA;SPCX;TSLA;TSM;defense
 - 2026-04-13 **[Mythos, Muse, and the Opportunity Cost of Compute](https://stratechery.com/2026/mythos-muse-and-the-opportunity-cost-of-compute/)** - score 54.9, free, full text; relates to GOOGL;TSM, AVGO;GOOGL;H1;TSM
-- 2025-11-21 **[2025.47: Gemini! At The Disco](https://stratechery.com/2025/gemini-at-the-disco/)** - score 53.6, free, full text; relates to GOOGL;NVDA;TSLA;TSM, AVGO;GOOGL;H1;H2;NVDA;SPCX;TSLA;TSM
 - 2026-03-02 **[Anthropic and Alignment](https://stratechery.com/2026/anthropic-and-alignment/)** - score 50.9, free, full text; relates to GOOGL;NVDA;TSM, AVGO;BWXT;CCJ;GOOGL;H1;LEU;NVDA;OKLO;SMR;SPCX;STDN;TSLA;TSM;XE;defense
 - 2026-03-17 **[An Interview with Nvidia CEO Jensen Huang About Accelerated Computing](https://stratechery.com/2026/an-interview-with-nvidia-ceo-jensen-huang-about-accelerated-computing/)** - score 49.9, free, full text; relates to NVDA;TSLA, AVGO;GOOGL;H1;NVDA;SPCX;TSLA
 - 2026-02-03 **[Microsoft and Software Survival](https://stratechery.com/2026/microsoft-and-software-survival/)** - score 48, free, full text; relates to GOOGL;NVDA;ORCL;TSM, AVGO;GOOGL;H1;H2;NVDA;ORCL;SPCX;TSLA;TSM
@@ -31,8 +30,9 @@
 - 2026-08-14 **[2026.33: The CapEx Train Keeps Rolling](https://stratechery.com/2026/the-capex-train-keeps-rolling/)** - score 41.8, free, full text; relates to 000660.KS;GOOGL;NVDA, 000660.KS;AVGO;GOOGL;H1;H2;NVDA
 - 2026-04-28 **[An Interview with OpenAI CEO Sam Altman and AWS CEO Matt Garman About Bedrock Managed Agents](https://stratechery.com/2026/an-interview-with-openai-ceo-sam-altman-and-aws-ceo-matt-garman-about-bedrock-managed-agents/)** - score 41.5, free, full text; relates to GOOGL, AVGO;GOOGL;H1
 - 2026-05-11 **[The Inference Shift](https://stratechery.com/2026/the-inference-shift/)** - score 40.6, free, full text; relates to NVDA;SPCX, AVGO;GOOGL;H1;H2;NVDA;SPCX;TSLA
-- 2026-10-29 **[An Interview with Palantir CTO Shyam Sankar About the AI Religious War](https://stratechery.com/2026/an-interview-with-palantir-cto-shyam-sankar-about-the-ai-religious-war/)** - score 39.5, free, full text; relates to GOOGL;NVDA, AVGO;BWXT;CCJ;GOOGL;H1;H2;LEU;NVDA;OKLO;SMR;SPCX;STDN;TSLA;XE;defense
 - 2026-03-31 **[Apple’s 50 Years of Integration](https://stratechery.com/2026/apples-50-years-of-integration/)** - score 39.5, free, full text; relates to GOOGL;NVDA, AVGO;GOOGL;H1;NVDA
+- 2026-10-29 **[An Interview with Palantir CTO Shyam Sankar About the AI Religious War](https://stratechery.com/2026/an-interview-with-palantir-cto-shyam-sankar-about-the-ai-religious-war/)** - score 39.5, free, full text; relates to GOOGL;NVDA, AVGO;BWXT;CCJ;GOOGL;H1;H2;LEU;NVDA;OKLO;SMR;SPCX;STDN;TSLA;XE;defense
+- 2026-09-04 **[An Interview with OpenAI President Greg Brockman About Astra and Alignment](https://stratechery.com/2026/an-interview-with-openai-president-greg-brockman-about-astra-and-alignment/)** - score 39, free, full text; relates to NVDA, AVGO;GOOGL;H1;NVDA
 
 ## Paid Updates, last 12 months (top 25; scored on title + teaser)
 
